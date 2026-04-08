@@ -1,0 +1,61 @@
+<div class="min-h-screen bg-f4f4f4 flex flex-col lg:flex-row">
+  <!-- Sidebar (Desktop) -->
+  <div class="hidden lg:flex flex-col w-72 bg-white shadow-lg p-6 rounded-r-2xl">
+    <div class="flex flex-col items-center text-center mb-8">
+      <img class="w-24 h-24 rounded-full border-2 border-gray-200 shadow" src="/assets/images/home/profile.png"
+        alt="user" />
+      <h1 class="mt-4 text-xl font-medium text-323232 mb-1">User Name</h1>
+      <p class="text-0000009e text-sm">+91 9876543210</p>
+    </div>
+    <!-- desktop user tabs -->
+    <nav class="space-y-3">
+      <a routerLink="/user/profile" routerLinkActive="bg-gray-100 text-323232 font-medium"
+        class="block w-full px-4 py-2 rounded-lg hover:bg-gray-100">Profile</a>
+      <a routerLink="/user/address" routerLinkActive="bg-gray-100 text-323232 font-medium"
+        class="block w-full px-4 py-2 rounded-lg hover:bg-gray-100">Address</a>
+      <a routerLink="/user/orders" routerLinkActive="bg-gray-100 text-323232 font-medium"
+        class="block w-full px-4 py-2 rounded-lg hover:bg-gray-100">Orders</a>
+      <a routerLink="/user/cart" routerLinkActive="bg-gray-100 text-323232 font-medium"
+        class="block w-full px-4 py-2 rounded-lg hover:bg-gray-100">Cart</a>
+      <a routerLink="/user/wishlist" routerLinkActive="bg-gray-100 text-323232 font-medium"
+        class="block w-full px-4 py-2 rounded-lg hover:bg-gray-100">Wishlist</a>
+
+      <a routerLink="#" class="block w-full px-4 py-2 rounded-lg hover:bg-gray-100 text-323232">Logout</a>
+    </nav>
+  </div>
+
+  <!-- Mobile user name & mobile no. -->
+  <div class="lg:hidden bg-white shadow-md px-2 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2 sm:gap-3">
+      <img class="w-10 h-10 lg:w-12 lg:h-12 rounded-full border" src="/assets/images/home/profile.png" alt="user" />
+      <div>
+        <h1 class="text-base font-medium text-323232">User Name</h1>
+        <p class="text-xs text-0000009e">+91 9876543210</p>
+      </div>
+    </div>
+    <!-- Dropdown for user menu -->
+    <div class="relative menu-wrapper">
+      <button (click)="showMenu = !showMenu" class="px-2 py-1 rounded-md border border-c3c3c3 text-sm font-medium">
+        Menu
+      </button>
+      <div *ngIf="showMenu" class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-md z-[11]">
+        <a routerLink="/user/profile" (click)="closeMenu()" routerLinkActive="bg-gray-100"
+          class="block px-2 py-1.5 text-323232 text-sm font-medium hover:bg-gray-100">Profile</a>
+        <a routerLink="/user/address" (click)="closeMenu()" routerLinkActive="bg-gray-100"
+          class="block px-2 py-1.5 text-323232 text-sm font-medium hover:bg-gray-100">Address</a>
+        <a routerLink="/user/orders" (click)="closeMenu()" routerLinkActive="bg-gray-100"
+          class="block px-2 py-1.5 text-323232 text-sm font-medium hover:bg-gray-100">Orders</a>
+        <a routerLink="/user/cart" (click)="closeMenu()" routerLinkActive="bg-gray-100"
+          class="block px-2 py-1.5 text-323232 text-sm font-medium hover:bg-gray-100">Cart</a>
+        <a routerLink="/user/wishlist" (click)="closeMenu()" routerLinkActive="bg-gray-100 "
+          class="block px-2 py-1.5 text-323232 text-sm font-medium hover:bg-gray-100">Wishlist</a>
+        <a routerLink="#" class="block px-2 py-1.5 hover:bg-gray-100 text-323232 text-sm">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Section -->
+  <div class="flex-1 p-2 md:p-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

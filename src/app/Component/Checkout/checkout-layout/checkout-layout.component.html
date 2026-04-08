@@ -1,0 +1,8 @@
+<!-- checkout layout -->
+<div class="">
+  <div class="bg-323232 w-full h-20">
+  </div>
+  <app-information *ngIf="activeStep === 'information'"  (continue)="goToShipping()"></app-information>
+  <app-shipping *ngIf="activeStep === 'shipping'" (continue)="goToConfirm()"></app-shipping>
+  <app-confirm *ngIf="activeStep === 'confirm'" (back)="goBackToShipping()" (back)="goBackToInformation()"></app-confirm>
+</div>

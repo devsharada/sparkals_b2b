@@ -1,0 +1,115 @@
+<!-- cart-sidebar.component.html -->
+<!-- Background overlay -->
+<div *ngIf="isOpen" (click)="close.emit()" class="fixed inset-0 bg-black/50 z-40 transition-opacity"></div>
+
+<!-- Sidebar -->
+<div [ngClass]="isOpen ? 'translate-x-0' : 'translate-x-full'"  (click)="$event.stopPropagation()"
+  class="fixed top-0 right-0 h-full w-80 md:w-96 bg-white shadow-lg z-50 transform transition-transform duration-300">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between p-4 border-b border-d3d3d3">
+    <p class="text-2xl font-marcellus font-normal text-323232">Shopping Cart</p>
+    <!-- Close Button -->
+    <button (click)="close.emit()"
+      class="absolute top-1 right-1 text-gray-600 hover:text-black hover:bg-f9f9f9 px-2 py-1 rounded-md text-xl">
+      ✕
+    </button>
+  </div>
+
+  <!-- Cart Items -->
+  <div class="p-2 md:px-4 py-2 overflow-y-scroll h-[calc(100%-320px)] ">
+    <div *ngFor="let item of cartItems; let i = index" class="border-b border-d3d3d3 py-2 last:border-b-0">
+
+      <div class="flex items-start gap-3 w-full">
+        <a [routerLink]="item.link">
+          <!-- Product Image -->
+          <img [src]="item.image" alt="{{ item.name }}" class="size-12 md:size-18 object-cover rounded-md shadow" />
+        </a>
+
+        <!-- Product Details -->
+        <div class="w-[calc(100%-60px)] md:w-[calc(100%-84px)] space-y-1.5 ">
+         <div class="w-full flex items-center justify-between gap-2">
+           <a class="w-[90%]" [routerLink]="item.link">
+            <p
+              class="font-normal font-marcellus text-323232 text-sm sm:text-sm md:text-base xl:text-[17px] truncate">
+              {{
+              item.name }}</p>
+          </a>
+          <button (click)="removeItem(i)" class="cursor-pointer">
+                <svg class="cursor-pointer size-4 sm:size-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M20.5001 6H3.5" stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path
+                d="M18.8332 8.5L18.3732 15.3991C18.1962 18.054 18.1077 19.3815 17.2427 20.1907C16.3777 21 15.0473 21 12.3865 21H11.6132C8.95235 21 7.62195 21 6.75694 20.1907C5.89194 19.3815 5.80344 18.054 5.62644 15.3991L5.1665 8.5"
+                stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path d="M9.5 11L10 16" stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path d="M14.5 11L14 16" stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path
+                d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
+                stroke="#323232" stroke-width="1"></path>
+            </g>
+          </svg>
+            </button>
+         </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-xs md:text-[13px] lg:text-sm font-normal text-2a82c4">SKU #: <span class="text-9d9d9d">{{ item.sku
+              }}</span></p>
+           <!-- Quantity Controls -->
+                <div class="flex items-center justify-start gap-1">
+                  <button (click)="decreaseQty(item)"
+                    class="size-4 md:size-5 flex items-center justify-center bg-gray-200 rounded">−</button>
+                  <span class="size-4 md:size-5 text-center text-xs/normal md:text-sm/normal">{{ item.quantity }}</span>
+                  <button (click)="increaseQty(item)"
+                    class="size-4 md:size-5 flex items-center justify-center bg-gray-200 rounded">+</button>
+                </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <!-- Price -->
+            <p class="whitespace-nowrap text-xs sm:text-[13px] md:text-sm font-medium text-323232">
+              ₹ {{ item.price | number }}
+            </p>
+
+            <!-- item Total quantitywise-->
+            <div class="whitespace-nowrap text-xs sm:text-[13px] md:text-base font-semibold text-323232">
+              ₹ {{ getItemTotal(item) | number }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="px-4 py-2 sticky bottom-0 border-t border-d3d3d3">
+     <div class="space-y-1 border-b border-d3d3d3 pb-2">
+        <div class="flex items-center justify-between text-323232 font-medium text-xs sm:text-sm xl:text-base">
+          <p>Subtotal</p>
+          <p>₹ {{ getCartTotal() | number }}</p>
+        </div>
+        <div class="flex items-center justify-between text-[#6B6B6B] font-normal text-xs sm:text-sm xl:text-base">
+          <p>Shipping</p>
+          <p>₹ {{ shippingCharge | number }}</p>
+        </div>
+        <div class="flex items-center justify-between text-[#6B6B6B] font-normal text-xs sm:text-sm xl:text-base">
+          <p>Tax</p>
+          <p>₹ {{ tax | number }}</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-between text-323232 font-semibold text-base sm:text-lg xl:text-xl pt-2">
+        <p>Total</p>
+        <p>₹ {{ getFinalTotal() | number }}</p>
+      </div>
+    <div>
+       <button (click)="goToCheckout()"
+        class="mt-3 cursor-pointer border border-323232 rounded-md bg-323232 text-white text-base md:text-lg lg:text-xl py-2 px-10 w-full mx-auto hover:bg-white hover:text-323232 transition hover:shadow-md">
+        Checkout</button>
+     <button (click)="goToCart()"
+        class="mt-2 cursor-pointer border border-323232 rounded-md bg-white text-323232 text-base md:text-lg lg:text-xl py-2 px-10 w-full mx-auto hover:bg-323232 hover:text-white transition hover:shadow-md">
+        View Cart</button>
+    </div>
+  </div>
+</div>

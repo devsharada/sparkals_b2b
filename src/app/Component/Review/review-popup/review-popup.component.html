@@ -1,0 +1,98 @@
+<!-- Write Review Modal -->
+<div *ngIf="isReviewModalOpen"  (click)="closeReviewModal()" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+  <div (click)="$event.stopPropagation()" class="bg-white w-full max-w-2xl  mx-auto rounded-2xl shadow-lg relative ">
+
+    <!-- Close button -->
+    <button (click)="closeReviewModal()"
+      class="absolute top-1 right-1 text-gray-600 hover:text-black hover:bg-f9f9f9 px-2 py-1 rounded-md text-xl">
+      ✕
+    </button>
+
+    <div class="max-h-[80vh] overflow-y-auto p-6 md:p-8">
+      <!-- Title -->
+      <div class="flex items-center gap-2 lg:gap-4 mb-6">
+        <img class="size-16 lg:size-24 rounded-full bg-f4f4f4 shadow-md" src="/assets/images/home/review.gif" alt="product">
+        <h3 class="text-xl md:text-[28px] font-normal font-marcellus text-323232 mb-5">Write a Review</h3>
+      </div>
+
+      <div class="bg-f4f4f4 px-4 py-2 flex items-center gap-2 lg:gap-4 mb-6">
+        <img class="size-14 lg:size-20" src="/assets/images/product/check-product.png" alt="product">
+        <p class="text-xl md:text-[28px] font-normal font-marcellus text-323232">Ruby Diamond - 5.40 Carats </p>
+      </div>
+
+      <!-- Form -->
+      <form (ngSubmit)="submitReview()" class="space-y-4 mt-6">
+        <!-- Rating -->
+        <div>
+          <label class="block text-lg lg:text-xl font-medium font-marcellus text-323232 mb-1">Rating</label>
+          <div class="flex items-center gap-2">
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <svg (click)="newReview.rating = star"
+                [ngClass]="{'fill-yellow-400 stroke-yellow-400': star <= newReview.rating, 'stroke-[#29B369]': star > newReview.rating}"
+                class="w-8 h-8 cursor-pointer transition" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9" />
+              </svg>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Review Text -->
+        <div class="mt-6">
+          <label class="block text-lg lg:text-xl font-medium font-marcellus text-323232 mb-1">Review</label>
+          <textarea [(ngModel)]="newReview.review" name="review" rows="4" required
+            placeholder="Share your feedback with us now"
+            class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"></textarea>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="flex items-center gap-2 mt-2 flex-wrap">
+          <!-- Custom Upload Box -->
+          <label for="fileUpload"
+            class="size-20 flex flex-col items-center justify-center border border-d3d3d3 rounded-md cursor-pointer text-center  text-sm md:text-[15px] text-767676 hover:border-18ac67 hover:text-18ac67 transition">
+            <span>Upload</span>
+            <span>Images</span>
+          </label>
+
+          <!-- Hidden Input -->
+          <input id="fileUpload" type="file" multiple (change)="onImageSelect($event)" class="hidden" />
+
+          <!-- Preview Images -->
+          <img *ngFor="let img of newReview.images" [src]="img"
+            class="size-20 object-cover rounded-md border border-d3d3d3" />
+        </div>
+
+        <!-- Name -->
+        <div class="relative">
+          <input [(ngModel)]="newReview.name" name="name" type="text" required
+            class="block px-2.5 pb-2 pt-4 w-full text-sm md:text-[15px] text-323232 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder=" " />
+          <label
+            class="absolute text-[15px] text-767676 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Your
+            Name</label>
+        </div>
+        <!-- email -->
+        <div class="relative">
+          <input [(ngModel)]="newReview.email" name="email" type="text" required
+            class="block px-2.5 pb-2 pt-4 w-full text-sm md:text-[15px] text-323232 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder=" " />
+          <label
+            class="absolute text-[15px] text-767676 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Your
+            Email</label>
+        </div>
+
+        <label class="flex items-start space-x-2 mt-2.5">
+          <input type="checkbox" class="h-4 w-4  border-gray-300 rounded" />
+          <span class="text-000000b2 text-sm lg:text-base font-normal">By submitting this review, you agree to Sparkal’s
+            Privacy Policy and Terms regarding the processing of your personal data.</span>
+        </label>
+
+        <!-- Submit -->
+        <button
+          class="mt-4 cursor-pointer rounded-md w-full font-marcellus border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-5 mx-auto hover:bg-white hover:text-323232 transition">
+          Submit Review
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

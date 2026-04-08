@@ -1,0 +1,35 @@
+<div
+  class="relative h-auto xl:h-[calc(100vh-114px)] w-full mx-auto pb-10 px-2 lg:px-5 xl:px-16 flex flex-col items-center justify-center">
+  <div class="pt-10 xl:pt-0 z-1">
+    <!-- section title -->
+    <h1
+      class="text-center text-141313 font-normal text-lg/tight sm:text-2xl/tight lg:text-3xl/tight xl:text-6xl/tight">
+      Wholesale Diamonds. Real-Time Access.<br>Direct from
+      Global Sources.</h1>
+     <!-- search diamond & demo button -->
+    <div class="flex items-center justify-center gap-2 lg:gap-4 xl:gap-6 mt-6 sm:mt-8 lg:mt-10 xl:mt-12">
+      <button
+        class="cursor-pointer bg-141313 text-white px-3 lg:px-6 py-2 rounded-md capitalize text-xs sm:text-base xl:text-lg w-auto sm:w-48 lg:w-56 xl:w-60">Search
+        Diamond Now</button>
+      <button (click)="openAuth('login')"
+        class="cursor-pointer bg-141313 text-white px-3 lg:px-6 py-2 rounded-md capitalize text-xs sm:text-base xl:text-lg w-auto sm:w-48 lg:w-56 xl:w-60">Request
+        A Demo</button>
+    </div>
+    <!-- watch video button -->
+    <button class="flex items-center justify-center gap-2 mx-auto mt-6 sm:mt-8 lg:mt-10 xl:mt-12">
+      <img class="size-8 sm:size-10 xl:size-12" src="/assets/images/home/play-video.gif" alt="play video" />
+      <span class="text-[15px] sm:text-lg lg:text-2xl xl:text-3xl font-normal text-141313">Watch Our Video</span>
+    </button>
+  </div>
+  <!-- background diamond images  -->
+  <div class="absolute bottom-0 left-0">
+    <img class="size-20 sm:size-36 md:size-44 lg:size-48 xl:size-60 2xl:size-80"
+      src="/assets/images/home/precious-diamond.png" alt="precious-diamond">
+  </div>
+  <div class="absolute right-0 inset-y-0">
+    <img class="w-20 sm:w-36 lg:w-40 xl:w-56 2xl:w-auto 2xl:h-full" src="/assets/images/home/gemstones.png" alt="gemstones">
+  </div>
+</div>
+
+
+<app-auth [isOpen]="isAuthOpen" [activeTab]="activeAuthTab" (close)="closeAuth()"></app-auth>

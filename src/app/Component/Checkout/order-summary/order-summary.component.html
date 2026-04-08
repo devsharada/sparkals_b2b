@@ -1,0 +1,54 @@
+<p class="text-xl lg:text-4xl font-normal text-323232 pb-5 border-b bordr-gray-300 text-center font-marcellus">Order
+  Summary
+</p>
+
+<div *ngFor="let item of orderItems" class="flex items-start gap-2 lg:gap-4 py-4 border-b border-gray-300">
+  <div class="relative size-12 lg:size-20">
+    <img class="size-full rounded-lg shadow-(--shadow1)" [src]="item.image" [alt]="item.name">
+    <div class="absolute -top-2 -right-1 size-4 sm:size-5 rounded-full bg-29b369 flex items-center justify-center">
+      <p class="text-white font-semibold text-[9px] sm:text-[10px]">{{ item.quantity }}</p>
+    </div>
+  </div>
+  <div class="w-[calc(100%-54px)] lg:w-[calc(100%-96px)]">
+    <p class="font-marcellus text-323232 font-normal text-base lg:text-xl flex items-center justify-between gap-2">
+      <span class="block truncate w-[90%]">{{ item.name }}</span>
+    </p>
+    <p class="text-00000091 font-semibold text-sm mt-1"><span class="text-c241b678">SKU #:</span>{{ item.sku }}</p>
+
+    <div class="flex items-center justify-between mt-1">
+        <!-- Price -->
+            <p class="whitespace-nowrap text-xs sm:text-[13px] md:text-base font-medium text-323232">
+              ₹ {{ item.price | number }}
+            </p>
+        <!-- product Total quantitywise-->
+            <div class="whitespace-nowrap text-xs sm:text-[13px] md:text-lg font-semibold text-323232">
+              ₹ {{ getItemTotal(item) | number }}
+            </div>
+    </div>
+  </div>
+</div>
+  <div class="py-2">
+     <div class="space-y-1 border-b border-d3d3d3 pb-2">
+        <div class="flex items-center justify-between text-323232 font-medium text-xs sm:text-sm xl:text-base">
+          <p>Subtotal</p>
+          <p>₹ {{ getCartTotal() | number }}</p>
+        </div>
+        <div class="flex items-center justify-between text-[#6B6B6B] font-normal text-xs sm:text-sm xl:text-base">
+          <p>Shipping</p>
+          <p>₹ {{ shippingCharge | number }}</p>
+        </div>
+        <div class="flex items-center justify-between text-[#6B6B6B] font-normal text-xs sm:text-sm xl:text-base">
+          <p>Tax</p>
+          <p>₹ {{ tax | number }}</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-between text-323232 font-semibold text-base sm:text-lg xl:text-xl pt-2">
+        <p>Total</p>
+        <p>₹ {{ getFinalTotal() | number }}</p>
+      </div>
+  </div>
+
+<button (click)="continue.emit()"
+  class="md:hidden mt-4 cursor-pointer w-full border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-10 rounded-md mx-auto hover:bg-white hover:text-323232 transition">
+  Continue
+</button>

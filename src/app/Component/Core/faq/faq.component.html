@@ -1,0 +1,27 @@
+<div class="w-full h-28 md:h-56 lg:h-64 bg-[url('/assets/images/home/policy_bg.png')] bg-cover bg-center">
+  <div class="flex items-center justify-center h-full w-full mx-auto px-2 lg:px-5 xl:px-16">
+    <h1 class="text-white text-xl sm:text-2xl md:text-4xl lg:text-6xl font-normal">FAQ</h1>
+  </div>
+</div>
+
+<div class="w-full lg:w-2/3 mx-auto px-2 lg:px-5 xl:px-16 py-5 lg:py-8">
+  <h2 class="text-323232 font-normal text-center  text-xl sm:text-2xl md:text-3xl lg:text-5xl/normal mb-5 lg:mb-8">💎 Frequently Asked Questions (FAQ)</h2>
+
+   <div *ngFor="let faq of faqs; let i = index" class="mb-4 border border-9d9d9d rounded-lg shadow-sm">
+    <button
+      (click)="toggle(i)"
+      class="w-full flex justify-between items-center p-2 lg:p-3 text-left font-medium text-sm md:text-base/relaxed lg:text-lg text-gray-800 hover:bg-gray-50 focus:outline-none rounded-lg"
+    >
+      {{ faq.q }}
+      <span class="ml-2 text-gray-500">
+        {{ activeIndex === i ? '−' : '+' }}
+      </span>
+    </button>
+
+    <div *ngIf="activeIndex === i" class="px-2 lg:px-3 pb-2 lg:pb-3 pt-2 text-323232 text-[13px] md:text-[15px] lg:text-[17px]">
+      {{ faq.a }}
+    </div>
+  </div>
+</div>
+
+<app-request-demo></app-request-demo>

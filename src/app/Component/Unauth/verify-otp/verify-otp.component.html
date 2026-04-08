@@ -1,0 +1,31 @@
+<p class="text-2xl md:text-4xl font-normal text-center font-marcellus text-323232 mb-1.5">OTP verification</p>
+<p class="text-sm md:text-base font-normal text-323232 text-center mb-5">Please enter the 4 digit code send to your Mobile
+Number +91 ********39</p>
+
+<form class="flex flex-col space-y-6 mt-8">
+  <div class="flex items-center justify-center gap-4">
+    <input maxlength="1" type="text"
+      class="w-10 block px-2.5 pb-2 pt-4 text-sm md:text-[15px] text-323232 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+      placeholder=" " />
+    <input maxlength="1" type="text"
+      class="w-10 block px-2.5 pb-2 pt-4 text-sm md:text-[15px] text-323232 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+      placeholder=" " />
+    <input maxlength="1" type="text"
+      class="w-10 block px-2.5 pb-2 pt-4 text-sm md:text-[15px] text-323232 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+      placeholder=" " />
+    <input maxlength="1" type="text"
+      class="w-10 block px-2.5 pb-2 pt-4 text-sm md:text-[15px] text-323232 bg-white  border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+      placeholder=" " />
+  </div>
+
+  <div class="flex items-center justify-between mt-4">
+   <p class="text-center text-lg md:text-xl">
+      <a class="text-323232 font-marcellus cursor-pointer" (click)="onForgotPasswordClick()">Back</a>
+    </p>
+     <button type="button" (click)="onUpdatePasswordClick()"
+      class=" cursor-pointer w-max border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-5 hover:bg-white hover:text-323232 transition">
+      Submit
+    </button>
+  </div>
+
+</form>

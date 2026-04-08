@@ -1,0 +1,74 @@
+<app-details></app-details>
+
+<div class="w-full mx-auto py-5 lg:py-10 px-2 lg:px-5 xl:px-16">
+  <p class="font-normal font-marcellus text-323232 text-xl lmd:text-2xl xl:text-4xl mb-1">Business & Personal Details
+    Form</p>
+  <p class="font-normal text-323232 text-sm md:text-lg xl:text-2xl">Complete your registration by filling out the
+    required information</p>
+
+
+  <!-- business & personal tabs layout -->
+  <div class="w-full mx-auto mt-5">
+    <!-- Tab Headers -->
+    <div class="w-full flex items-center">
+      <button (click)="setActive('business')"
+        class="flex-1 py-2 text-center text-sm md:text-base lg:text-lg font-medium transition border border-868282 rounded-full"
+        [ngClass]="activeTab === 'business' ? 'bg-black text-white' : 'bg-white text-868282 hover:text-black'">
+        Business Details
+      </button>
+      <button (click)="setActive('personal')"
+        class="flex-1 py-2 text-center text-sm md:text-base lg:text-lg font-medium transition border border-868282 rounded-full"
+        [ngClass]="activeTab === 'personal' ? 'bg-black text-white' : 'bg-white text-868282 hover:text-black'">
+        Personal Information
+      </button>
+    </div>
+
+    <!-- Tab Content -->
+    <div>
+      <div *ngIf="activeTab === 'business'">
+        <app-business-details></app-business-details>
+      </div>
+
+      <div *ngIf="activeTab === 'personal'">
+        <app-personal-details></app-personal-details>
+      </div>
+    </div>
+    <div class="flex items-center justify-end gap-2 sm:gap-4">
+      <button type="button"
+        class="mt-8 cursor-pointer w-auto sm:w-32 block rounded-md border border-323232 hover:bg-323232 hover:text-white text-lg md:text-xl py-2 px-5  bg-white text-323232 hover:shadow-md transition">
+        Reset
+      </button>
+      <button type="button" (click)="openSuccessPopup()"
+        class="mt-8 cursor-pointer w-max block rounded-md border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-5  hover:bg-white hover:text-323232 hover:shadow-md transition">
+        Submit
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+<!--Registration successful Popup -->
+<div *ngIf="isSuccessPopupOpen" (click)="closeSuccessPopup()"
+  class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+  <div (click)="$event.stopPropagation()" class="bg-white w-full max-w-2xl  mx-auto rounded-2xl shadow-lg relative">
+
+    <!-- Close Button -->
+    <button (click)="closeSuccessPopup()"
+      class="absolute top-1 right-1 text-gray-600 hover:text-black hover:bg-f9f9f9 px-2 py-1 rounded-md text-xl">
+      ✕
+    </button>
+
+    <div class="p-6 md:p-8 text-center">
+      <img class="size-20 xl:size-24 mx-auto mb-4" [src]="popupGif" alt="status">
+      <p class="font-normal font-marcellus text-xl md:text-2xl xl:text-3xl text-323232">{{ popupTitle }}</p>
+      <p class="font-normal text-base lg:text-lg text-323232 mt-3 my-6">{{ popupText }}</p>
+      <p class="font-normal text-sm lg:text-base text-323232 mt-1">{{ popupMessage }}</p>
+
+      <button (click)="redirectToProducts()"
+        class="mt-8 capitalize mx-auto cursor-pointer w-max font-marcellus block rounded-md border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-5  hover:bg-white hover:text-323232 transition">
+        Continue
+      </button>
+    </div>
+  </div>
+</div>

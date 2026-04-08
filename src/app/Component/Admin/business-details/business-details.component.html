@@ -1,0 +1,285 @@
+<div class="p-3 lg:p-6 bg-white rounded-xl mt-4 border-2 border-dashed border-d3d3d3">
+  <div class="w-full mx-auto px-2 lg:px-5 xl:px-16">
+    <p class="text-0d5bab font-medium text-base md:text-lg lg:text-xl capitalize">Business Information</p>
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 mt-4 space-y-4">
+
+      <!-- Business Name -->
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Business Name*</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Business Name" />
+      </div>
+      <!-- Business type -->
+      <div>
+        <label for="businessType" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          Business type*
+        </label>
+        <select id="businessType" class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676
+           bg-white border-1 border-c3c3c3  focus:outline-none focus:ring-0 focus:border-18ac67 peer">
+          <option value="" disabled selected>Select business type</option>
+          <option value="spprs">Sole Proprietorship</option>
+          <option value="p2">Partnership 2</option>
+          <option value="llp">Limited Liability Partnership (LLP)</option>
+          <option value="pvtlc">Private Limited Company</option>
+          <option value="pbllc">Public Limited Company</option>
+        </select>
+      </div>
+      <!-- Business Phone Number -->
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Business Phone
+          Number</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Phone no." />
+      </div>
+      <!-- Business Email ID -->
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Business Email ID</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Email ID" />
+      </div>
+      <!-- Business Website/URL link -->
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Business Website/URL
+          link</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter website/url" />
+      </div>
+      <!-- Business Logo -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Business Logo</label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="businessLogoName" placeholder="Upload Logo" class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232
+             placeholder:text-767676 bg-white border border-c3c3c3 appearance-none
+             focus:outline-none focus:ring-0 focus:border-18ac67" />
+
+          <!-- Upload Icon / Preview -->
+          <label for="businessLogoUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!businessLogoPreview" fill="#898989" class="size-5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+                </path>
+              </g>
+            </svg>
+            <img *ngIf="businessLogoPreview" [src]="businessLogoPreview" alt="Logo Preview"
+              class="size-6 rounded-md object-cover border border-c3c3c3" />
+          </label>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="businessLogoUpload" accept="image/*" (change)="onImageSelect($event, 'businessLogo')"
+            class="hidden" />
+        </div>
+      </div>
+
+      <!-- Years in Business -->
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Years in Business</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter years of business" />
+      </div>
+      <!-- GST/TAX ID Number -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          GST/TAX ID Number
+        </label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="gstName" placeholder="Enter GST/TAX ID Number"
+            class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67" />
+
+          <!-- Upload GST/TAX ID Image Trigger -->
+          <label for="gstUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!gstImagePreview" fill="#898989" class="size-5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+                </path>
+              </g>
+            </svg>
+
+            <img *ngIf="gstImagePreview" [src]="gstImagePreview" alt="gst Preview"
+              class="size-6 rounded-md object-cover border border-c3c3c3" />
+          </label>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="gstUpload" accept="image/*" (change)="onImageSelect($event, 'gst')" class="hidden" />
+        </div>
+      </div>
+      <!-- PAN Number -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          PAN Number
+        </label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="panNumber" placeholder="Enter PAN no."
+            class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67" />
+
+          <!-- Upload PAN Image Trigger -->
+          <label for="panUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!panImagePreview" fill="#898989" class="size-5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+                </path>
+              </g>
+            </svg>
+
+            <img *ngIf="panImagePreview" [src]="panImagePreview" alt="PAN Preview"
+              class="size-6 rounded-md object-cover border border-c3c3c3" />
+          </label>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="panUpload" accept="image/*" (change)="onImageSelect($event, 'pan')" class="hidden" />
+        </div>
+      </div>
+      <!-- Udyam Number -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          Udyam No.
+        </label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="udyamName" placeholder="Enter Udyam No."
+            class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67" />
+
+          <!-- Upload udyam Image Trigger -->
+          <label for="udyamUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!udyamImagePreview" fill="#898989" class="size-5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+                </path>
+              </g>
+            </svg>
+
+            <img *ngIf="udyamImagePreview" [src]="udyamImagePreview" alt="PAN Preview"
+              class="size-6 rounded-md object-cover border border-c3c3c3" />
+          </label>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="udyamUpload" accept="image/*" (change)="onImageSelect($event, 'udyam')"
+            class="hidden" />
+        </div>
+      </div>
+      <!-- CIN No. -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          CIN No.
+        </label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="cinName" placeholder="Enter CIN No."
+            class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67" />
+
+          <!-- Upload CIN Image Trigger -->
+          <label for="cinUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!cinImagePreview" fill="#898989" class="size-5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+                </path>
+              </g>
+            </svg>
+
+            <img *ngIf="cinImagePreview" [src]="cinImagePreview" alt="PAN Preview"
+              class="size-6 rounded-md object-cover border border-c3c3c3" />
+          </label>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="cinUpload" accept="image/*" (change)="onImageSelect($event, 'cin')" class="hidden" />
+        </div>
+      </div>
+      <!-- Shop Photo -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          Shop Photo
+        </label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="shopPhotoName" placeholder="Upload Photo"
+            class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67" />
+
+          <!-- Upload Shop Image Trigger -->
+          <label for="shopUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!shopPhotoPreview" fill="#898989" class="size-5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+                </path>
+              </g>
+            </svg>
+
+            <img *ngIf="shopPhotoPreview" [src]="shopPhotoPreview" alt="PAN Preview"
+              class="size-6 rounded-md object-cover border border-c3c3c3" />
+          </label>
+
+          <!-- Hidden File Input -->
+          <input type="file" id="shopUpload" accept="image/*" (change)="onImageSelect($event, 'shopPhoto')"
+            class="hidden" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="p-3 lg:p-6 bg-white rounded-xl mt-4 border-2 border-dashed border-d3d3d3">
+  <div class="w-full mx-auto px-2 lg:px-5 xl:px-16">
+    <div class="flex items-center justify-between">
+      <p class="text-0d5bab font-medium text-base md:text-lg lg:text-xl capitalize">Contact & Location</p>
+      <button type="button"
+        class="cursor-pointer w-max block rounded-md border border-323232 bg-323232 text-white text-base xl:text-lg py-1 px-5  hover:bg-white hover:text-323232 hover:shadow-md transition">
+        Add Branch
+      </button>
+    </div>
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 mt-4">
+      <div class="col-span-1 space-y-4">
+
+        <div>
+          <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Official Address</label>
+          <textarea name="" rows="4" placeholder="Enter Official Address"
+            class="block px-2.5 pb-2 py-2 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white rounded-md border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"></textarea>
+        </div>
+
+        <div>
+          <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Map Location URL</label>
+          <div class="relative">
+            <input type="text"
+              class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+              placeholder="Enter Goggle map URL" />
+            <p
+              class="cursor-pointer w-12 absolute inset-y-0 right-0 bg-323232 text-white flex items-center justify-center rounded-r-md">
+              ?</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-span-1 space-y-4">
+        <div>
+          <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Outlet Branch</label>
+          <textarea name="" rows="4" placeholder="Enter outlet/branch address"
+            class="block px-2.5 pb-2 py-2 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white rounded-md border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

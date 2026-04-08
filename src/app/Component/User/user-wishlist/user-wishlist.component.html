@@ -1,0 +1,87 @@
+<div class="bg-white shadow rounded-2xl p-3 lg:p-8">
+  <h3 class="text-lg sm:text-xl md:text-xl lg:text-2xl font-medium mb-4 text-323232">My Wishlist</h3>
+
+    <ng-container *ngIf="products1.length > 0; else emptyWishlist">
+   <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4">
+    <!-- product card -->
+      <div *ngFor="let item of products1">
+        <div class="relative group border border-d3d3d3 rounded-md overflow-hidden transition-shadow duration-300">
+
+            <div class="relative">
+              <a [routerLink]="item.link">
+              <!-- product image -->
+              <div class="aspect-square overflow-hidden border-b border-d3d3d3 relative">
+                <!-- Default Image -->
+                <img [src]="item.image1" [alt]="item.name"
+                  class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+
+                <!-- Hover Image -->
+                <img [src]="item.image2" [alt]="item.name"
+                  class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+              </a>
+              <!-- cart icon -->
+              <button class="cursor-pointer absolute -bottom-5 right-2 z-10" title="Add to Cart">
+                <p
+                  class="size-8 sm:size-10 flex items-center justify-center bg-white rounded-full shadow-md border border-d3d3d3 hover:scale-105 transition duration-200">
+                  <svg class="size-5 sm:size-6" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 15L9 9.5C9 7.01472 11.0147 5 13.5 5V5C15.9853 5 18 7.01472 18 9.5L18 15"
+                      stroke="#323232" stroke-linecap="round" />
+                    <path
+                      d="M4.22244 14.9508C4.35409 13.1954 4.41992 12.3177 4.99532 11.7839C5.57071 11.25 6.45088 11.25 8.21123 11.25H18.7888C20.5491 11.25 21.4293 11.25 22.0047 11.7839C22.5801 12.3177 22.6459 13.1954 22.7776 14.9508L23.4638 24.1004C23.5393 25.107 23.577 25.6103 23.2803 25.9302C22.9835 26.25 22.4788 26.25 21.4694 26.25H5.53062C4.5212 26.25 4.0165 26.25 3.71974 25.9302C3.42298 25.6103 3.46072 25.107 3.53622 24.1004L4.22244 14.9508Z"
+                      stroke="#323232" />
+                  </svg>
+                </p>
+              </button>
+            </div>
+
+            <!--delete or remove product icon -->
+            <button (click)="removeItem(item.id)" class="cursor-pointer absolute top-2 right-2 z-10" title="Remove from Wishlist">
+              <p
+                class="size-8 sm:size-10 flex items-center justify-center bg-white rounded-full hover:shadow-md hover:scale-105 transition duration-200">
+                <svg class="cursor-pointer size-5 sm:size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M20.5001 6H3.5" stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path
+                d="M18.8332 8.5L18.3732 15.3991C18.1962 18.054 18.1077 19.3815 17.2427 20.1907C16.3777 21 15.0473 21 12.3865 21H11.6132C8.95235 21 7.62195 21 6.75694 20.1907C5.89194 19.3815 5.80344 18.054 5.62644 15.3991L5.1665 8.5"
+                stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path d="M9.5 11L10 16" stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path d="M14.5 11L14 16" stroke="#323232" stroke-width="1" stroke-linecap="round"></path>
+              <path
+                d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6"
+                stroke="#323232" stroke-width="1"></path>
+            </g>
+          </svg>
+              </p>
+            </button>
+            <a [routerLink]="item.link">
+            <!-- product name, weight & clarity -->
+            <div class="bg-transparent p-3 space-y-2">
+              <p class="text-0000009e font-normal text-xs">Weight: {{ item.weight }}</p>
+              <p class="text-0000009e font-normal text-xs">Clarity Grade: {{ item.clarity }}</p>
+              <p class="capitalize text-[13px] lg:text-[15px] font-normal truncate text-323232">{{ item.name
+                }}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    </ng-container>
+
+     <!-- Empty Wishlist -->
+  <ng-template #emptyWishlist>
+    <div
+      class="flex flex-col items-center justify-center h-full px-2 sm:px-4 py-8 text-center">
+      <img src="assets/images/home/shopping-bag.png" alt="Empty Cart" class="size-30 md:size-40 object-contain mb-8" />
+      <h2 class="text-xl lg:text-3xl text-323232 font-normal mb-1">Your wishlist is empty</h2>
+      <p class="text-sm lg:text-base text-323232 mb-8">Looks like you haven’t added anything yet.</p>
+      <a routerLink="/home"
+        class="cursor-pointer font-marcellus w-max rounded-md border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-5 hover:bg-white hover:text-323232 transition">
+        Continue Shopping
+      </a>
+    </div>
+  </ng-template>
+</div>

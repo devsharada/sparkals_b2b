@@ -1,0 +1,25 @@
+<div class="w-full mx-auto py-5 lg:py-8 px-2 lg:px-5 xl:px-16 flex flex-col items-center justify-center">
+  <!-- section title -->
+  <h4 class="text-center capitalize text-141313 font-normal text-lg/tight sm:text-2xl/tight lg:text-3xl/tight xl:text-6xl/tight">
+    Steps to join</h4>
+
+  <!-- what we do -->
+  <div class="w-3/4 sm:w-full lg:w-3/4 2xl:w-3/5 mx-auto grid grid-cols-1 sm:grid-cols-3 mt-6 lg:mt-12">
+
+    <div *ngFor="let step of steps"
+      class="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="h-1.5 bg-212121"></div>
+
+      <div class="p-4 lg:p-6 border border-212121">
+        <img [src]="step.image" [alt]="step.name" class="w-12 h-12 md:w-14 md:h-14 ms-auto mb-4">
+        <p class="text-323232 font-bold text-sm sm:text-base ml-1 -mb-2">Step</p>
+        <p class="text-212121 font-bold text-4xl sm:text-5xl md:text-[80px]">{{ step.sequence }}</p>
+        <p class="font-marcellus text-lg sm:text-xl md:text-2xl xl:text-[32px] text-18ac67 mb-2 md:mb-4 mt-3 md:mt-6">
+          {{ step.title }}
+        </p>
+
+        <p class="text-0000009e text-xs sm:text-sm lg:text-base font-normal">{{ step.description }}</p>
+       </div>
+    </div>
+  </div>
+</div>

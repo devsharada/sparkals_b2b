@@ -1,0 +1,221 @@
+<div class="p-3 lg:p-6 bg-white rounded-xl mt-4 border-2 border-dashed border-d3d3d3">
+  <div class="w-full mx-auto px-2 lg:px-5 xl:px-16">
+    <p class="text-0d5bab font-medium text-base md:text-lg lg:text-xl capitalize">Personal Information</p>
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-4 mt-4">
+      <!-- first name -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">First Name</label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="aadharNo" class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px]
+                   text-323232 placeholder:text-767676 bg-white border border-c3c3c3
+                   focus:outline-none focus:ring-0 focus:border-18ac67 peer" placeholder="Enter First Name" />
+
+          <!-- Upload -->
+          <label for="userUpload" class="cursor-pointer absolute top-2.5 right-3">
+          <svg *ngIf="!userPreview" fill="#898989" class="size-5 " viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+              </path>
+            </g>
+          </svg>
+            <img *ngIf="userPreview" [src]="userPreview" alt="user Preview"
+              class="size-6 rounded object-cover border border-c3c3c3" />
+          </label>
+          <input type="file" id="userUpload" accept="image/*" (change)="onImageSelect($event, 'user')"
+            class="hidden" />
+        </div>
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Last Name</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Last Name" />
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Email ID</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Email ID" />
+      </div>
+
+      <div>
+        <label for="businessType" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">
+          Gender
+        </label>
+        <select id="businessType" class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676
+           bg-white border-1 border-c3c3c3  focus:outline-none focus:ring-0 focus:border-18ac67 peer">
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Date Of Birth</label>
+        <div class="relative">
+          <input type="date"
+            class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder="Enter Date Of Birth" />
+        </div>
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Mobile No.</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Mobile No." />
+      </div>
+
+      <!-- Aadhar -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Aadhar No.</label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="aadharNo" class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px]
+                   text-323232 placeholder:text-767676 bg-white border border-c3c3c3
+                   focus:outline-none focus:ring-0 focus:border-18ac67 peer" placeholder="Enter Aadhar No." />
+
+          <!-- Upload -->
+          <label for="aadharUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!aadharPreview" fill="#898989" class="size-5 " viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+              </path>
+            </g>
+          </svg>
+            <img *ngIf="aadharPreview" [src]="aadharPreview" alt="Aadhar Preview"
+              class="size-6 rounded object-cover border border-c3c3c3" />
+          </label>
+          <input type="file" id="aadharUpload" accept="image/*" (change)="onImageSelect($event, 'aadhar')"
+            class="hidden" />
+        </div>
+      </div>
+
+      <!-- PAN -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">PAN No.</label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="panNo" class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px]
+                   text-323232 placeholder:text-767676 bg-white border border-c3c3c3
+                   focus:outline-none focus:ring-0 focus:border-18ac67 peer" placeholder="Enter PAN No." />
+          <label for="panUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!panPreview" fill="#898989" class="size-5 " viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+              </path>
+            </g>
+          </svg>
+            <img *ngIf="panPreview" [src]="panPreview" alt="PAN Preview"
+              class="size-6 rounded object-cover border border-c3c3c3" />
+          </label>
+          <input type="file" id="panUpload" accept="image/*" (change)="onImageSelect($event, 'pan')" class="hidden" />
+        </div>
+      </div>
+
+      <!-- Passport -->
+      <div>
+        <label class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Passport No.</label>
+        <div class="relative">
+          <input type="text" [(ngModel)]="passportNo" class="block pl-2 pr-8 py-2 h-11 w-full rounded-md text-sm md:text-[15px]
+                   text-323232 placeholder:text-767676 bg-white border border-c3c3c3
+                   focus:outline-none focus:ring-0 focus:border-18ac67 peer" placeholder="Enter Passport No." />
+          <label for="passportUpload" class="cursor-pointer absolute top-2.5 right-3">
+            <svg *ngIf="!passportPreview" fill="#898989" class="size-5 " viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h7a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21ZM22.71,4.29l-3-3a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-3,3a1,1,0,0,0,1.42,1.42L18,4.41V10a1,1,0,0,0,2,0V4.41l1.29,1.3a1,1,0,0,0,1.42,0A1,1,0,0,0,22.71,4.29Z">
+              </path>
+            </g>
+          </svg>
+            <img *ngIf="passportPreview" [src]="passportPreview" alt="Passport Preview"
+              class="size-6 rounded object-cover border border-c3c3c3" />
+          </label>
+          <input type="file" id="passportUpload" accept="image/*" (change)="onImageSelect($event, 'passport')"
+            class="hidden" />
+        </div>
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Customer Type</label>
+        <select id="businessType" class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676
+           bg-white border-1 border-c3c3c3  focus:outline-none focus:ring-0 focus:border-18ac67 peer">
+          <option value="" disabled selected>Select Customer Type</option>
+          <option value="Wholesaler">Wholesaler</option>
+          <option value="Retailer">Retailer</option>
+          <option value="Individual">Individual</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="p-3 lg:p-6 bg-white rounded-xl mt-4 border-2 border-dashed border-d3d3d3">
+  <div class="w-full mx-auto px-2 lg:px-5 xl:px-16">
+
+    <p class="text-0d5bab font-medium text-base md:text-lg lg:text-xl capitalize">Address Information</p>
+
+    <div class="w-full grid grid-cols-1 sm:grid-cols-4 gap-2 lg:gap-4 mt-4 space-y-4">
+
+      <div class="col-span-1 sm:col-span-4">
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Address</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Address" />
+      </div>
+
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Country</label>
+        <select id="businessType" class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676
+           bg-white border-1 border-c3c3c3  focus:outline-none focus:ring-0 focus:border-18ac67 peer">
+          <option value="" disabled selected>Select Country</option>
+          <option value="India">India</option>
+          <option value="Japan">Japan</option>
+          <option value="Italy">Italy</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">State</label>
+        <select id="businessType" class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676
+           bg-white border-1 border-c3c3c3  focus:outline-none focus:ring-0 focus:border-18ac67 peer">
+          <option value="" disabled selected>Select State</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">City</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Mobile No." />
+      </div>
+
+      <div>
+        <label for="" class="font-semibold mb-1 text-323232 text-sm lg:text-base capitalize">Pincode</label>
+        <input type="text"
+          class="block px-2 py-2 h-11 w-full rounded-md text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Enter Pincode" />
+      </div>
+
+    </div>
+  </div>
+</div>

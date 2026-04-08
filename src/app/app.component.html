@@ -1,0 +1,6 @@
+<app-header *ngIf="showLayout"></app-header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <app-newsletter *ngIf="showLayout"></app-newsletter>
+<app-footer *ngIf="showLayout"></app-footer>

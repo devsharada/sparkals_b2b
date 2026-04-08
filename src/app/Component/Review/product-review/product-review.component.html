@@ -1,0 +1,177 @@
+<div class="w-full mx-auto py-5 lg:py-8 px-2 lg:px-5 xl:px-16">
+  <!-- Title -->
+  <h2 class="text-xl lg:text-3xl font-normal text-323232 font-marcellus mb-4 lg:mb-8">
+    User Review - Ruby Diamond - 5.40 Carats
+  </h2>
+
+  <!-- Ratings & Actions Row -->
+  <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10">
+    <!-- Left: Rating Overview -->
+    <div class="flex items-start">
+      <!-- Average Rating -->
+      <div class="pr-4 lg:pr-10">
+        <div class="flex items-center justify-start gap-2 mb-2">
+          <div class="text-4xl lg:text-6xl font-normal text-323232">4.5</div>
+          <img src="/assets/images/home/stars.png" alt="stars" class="size-6 lg:size-10" />
+        </div>
+        <div class="text-sm text-5c5a5a">12 verified Buyers</div>
+      </div>
+
+      <!-- Rating Bars -->
+      <div class="space-y-0.5 w-40 lg:w-60 pl-4 lg:pl-10 border-l border-9d9d9d">
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-323232 font-normal">5</span>
+          <div class="w-full bg-f4f4f4 h-1.5 rounded">
+            <div class="bg-green-500 h-1.5 rounded w-3/4"></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-323232 font-normal">4</span>
+          <div class="w-full bg-f4f4f4 h-1.5 rounded">
+            <div class="bg-green-400 h-1.5 rounded w-1/3"></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-323232 font-normal">3</span>
+          <div class="w-full bg-f4f4f4 h-1.5 rounded">
+            <div class="bg-yellow-400 h-1.5 rounded w-1/5"></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-323232 font-normal">2</span>
+          <div class="w-full bg-f4f4f4 h-1.5 rounded">
+            <div class="bg-orange-400 h-1.5 rounded w-1/6"></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-323232 font-normal">1</span>
+          <div class="w-full bg-f4f4f4 h-1.5 rounded">
+            <div class="bg-red-500 h-1.5 rounded w-1/12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Action buttons -->
+    <div class="flex items-center gap-3">
+      <button (click)="reviewPopup.openReviewModal()"
+        class="cursor-pointer px-4 py-2 bg-white border border-767676 text-323232 text-base lg:text-lg rounded-md hover:bg-323232 hover:text-white hover:shadow-md transition duration-300">Write
+        a review</button>
+      <button
+        class="px-3 py-2 lg:py-2.5 border border-767676 rounded-md bg-white hover:bg-323232 group hover:shadow-md transition duration-300">
+        <svg class="stroke-[#5B5858] group-hover:stroke-white" width="24" height="25" viewBox="0 0 24 25" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M21.25 12.4999H8.895M4.534 12.4999H2.75M4.534 12.4999C4.534 11.9217 4.76368 11.3672 5.17251 10.9584C5.58134 10.5496 6.13583 10.3199 6.714 10.3199C7.29217 10.3199 7.84666 10.5496 8.25549 10.9584C8.66432 11.3672 8.894 11.9217 8.894 12.4999C8.894 13.0781 8.66432 13.6326 8.25549 14.0414C7.84666 14.4502 7.29217 14.6799 6.714 14.6799C6.13583 14.6799 5.58134 14.4502 5.17251 14.0414C4.76368 13.6326 4.534 13.0781 4.534 12.4999ZM21.25 19.1069H15.502M15.502 19.1069C15.502 19.6852 15.2718 20.2403 14.8628 20.6492C14.4539 21.0582 13.8993 21.2879 13.321 21.2879C12.7428 21.2879 12.1883 21.0572 11.7795 20.6484C11.3707 20.2396 11.141 19.6851 11.141 19.1069M15.502 19.1069C15.502 18.5286 15.2718 17.9745 14.8628 17.5655C14.4539 17.1566 13.8993 16.9269 13.321 16.9269C12.7428 16.9269 12.1883 17.1566 11.7795 17.5654C11.3707 17.9742 11.141 18.5287 11.141 19.1069M11.141 19.1069H2.75M21.25 5.89289H18.145M13.784 5.89289H2.75M13.784 5.89289C13.784 5.31472 14.0137 4.76023 14.4225 4.3514C14.8313 3.94257 15.3858 3.71289 15.964 3.71289C16.2503 3.71289 16.5338 3.76928 16.7983 3.87883C17.0627 3.98839 17.3031 4.14897 17.5055 4.3514C17.7079 4.55383 17.8685 4.79415 17.9781 5.05864C18.0876 5.32313 18.144 5.60661 18.144 5.89289C18.144 6.17917 18.0876 6.46265 17.9781 6.72714C17.8685 6.99163 17.7079 7.23195 17.5055 7.43438C17.3031 7.63681 17.0627 7.79739 16.7983 7.90695C16.5338 8.0165 16.2503 8.07289 15.964 8.07289C15.3858 8.07289 14.8313 7.84321 14.4225 7.43438C14.0137 7.02555 13.784 6.47106 13.784 5.89289Z"
+            stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Reviews Slider -->
+  <div class="w-full ">
+    <div class="relative mt-4 sm:mt-6 md:mt-8">
+      <!-- Navigation Buttons -->
+      <div class="absolute left-0 lg:-left-4 xl:-left-10 top-1/2 -translate-y-1/2 z-10">
+        <button
+          class="cursor-pointer swiper-button-review-prev size-7 sm:size-9 flex items-center justify-center text-xl sm:text-2xl bg-fcf0ff text-323232 hover:shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+          <svg width="10" height="18" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.2258 23.6955L0.354838 13.3602C0.225806 13.2372 0.134623 13.1039 0.08129 12.9604C0.0270964 12.8168 0 12.663 0 12.499C0 12.3349 0.0270964 12.1811 0.08129 12.0376C0.134623 11.894 0.225806 11.7607 0.354838 11.6377L11.2258 1.2717C11.5269 0.984609 11.9032 0.841064 12.3548 0.841064C12.8065 0.841064 13.1935 0.994863 13.5161 1.30246C13.8387 1.61006 14 1.96892 14 2.37905C14 2.78917 13.8387 3.14804 13.5161 3.45563L4.03226 12.499L13.5161 21.5423C13.8172 21.8294 13.9677 22.1829 13.9677 22.6029C13.9677 23.0237 13.8065 23.3879 13.4839 23.6955C13.1613 24.0031 12.7849 24.1569 12.3548 24.1569C11.9247 24.1569 11.5484 24.0031 11.2258 23.6955Z"
+              fill="black" />
+          </svg>
+        </button>
+      </div>
+      <div class="absolute right-0 lg:-right-4 xl:-right-10 top-1/2 -translate-y-1/2 z-10">
+        <button
+          class="cursor-pointer swiper-button-review-next size-7 sm:size-9 flex items-center justify-center text-xl sm:text-2xl bg-fcf0ff text-323232 hover:shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+          <svg width="10" height="18" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M2.77419 1.30355L13.6452 11.6388C13.7742 11.7618 13.8654 11.8951 13.9187 12.0387C13.9729 12.1822 14 12.336 14 12.5001C14 12.6641 13.9729 12.8179 13.9187 12.9615C13.8654 13.105 13.7742 13.2383 13.6452 13.3613L2.77419 23.7273C2.47312 24.0144 2.09677 24.158 1.64516 24.158C1.19355 24.158 0.806452 24.0042 0.483871 23.6966C0.16129 23.389 0 23.0301 0 22.62C0 22.2098 0.16129 21.851 0.483871 21.5434L9.96774 12.5001L0.483871 3.45673C0.182796 3.16964 0.0322571 2.8161 0.0322571 2.39613C0.0322571 1.97534 0.193548 1.61115 0.516129 1.30355C0.838709 0.995955 1.21505 0.842157 1.64516 0.842157C2.07527 0.842157 2.45161 0.995955 2.77419 1.30355Z"
+              fill="black" />
+          </svg>
+        </button>
+      </div>
+
+      <swiper-container #swiperRef init="false">
+        <!-- review card -->
+        <swiper-slide *ngFor="let item of reviews" class="py-1">
+          <div class="relative border border-9d9d9d rounded-3xl overflow-hidden transition-shadow duration-300 p-4">
+            <p class="flex items-center justify-between text-base lg:text-lg text-323232 font-bold mb-3">{{ item.name }}
+              <span class="bg-[#14958F] px-1 py-0 text-white inline-flex items-center gap-1 text-sm/normal">{{
+                item.rating }} <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M1.9125 9.5L2.725 5.9875L0 3.625L3.6 3.3125L5 0L6.4 3.3125L10 3.625L7.275 5.9875L8.0875 9.5L5 7.6375L1.9125 9.5Z"
+                    fill="white" />
+                </svg>
+              </span>
+            </p>
+            <p class="text-sm lg:text-base text-5c5a5a line-clamp-5">{{ item.review }}</p>
+            <div class="flex items-center flex-wrap gap-2 my-3">
+              <ng-container *ngFor="let img of item.images.slice(0, 2); let i = index">
+                <div class="relative w-20 h-20">
+                  <img [src]="img" alt="review image"
+                    class="w-full h-full object-cover border border-d3d3d3 rounded-md cursor-pointer"
+                    (click)="openImageModal(item.images, i)" />
+
+                  <!-- +X overlay -->
+                  <div *ngIf="i === 1 && item.images.length > 2"
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center rounded-md text-white font-semibold text-sm cursor-pointer"
+                    (click)="openImageModal(item.images, i)">
+                    +{{ item.images.length - 2 }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-sm lg:text-base font-normal text-323232">{{ item.user}} | {{ item.date }}</p>
+              <div class="flex items-ceneter justify-end gap-4 lg:gap-6">
+                <p class="flex items-center gap-2 text-323232 text-sm lg:text-base font-normal">
+                  <svg class="size-4 lg:size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M18 21H8V8L15 1L16.25 2.25C16.3667 2.36667 16.4627 2.525 16.538 2.725C16.6133 2.925 16.6507 3.11667 16.65 3.3V3.65L15.55 8H21C21.5333 8 22 8.2 22.4 8.6C22.8 9 23 9.46667 23 10V12C23 12.1167 22.9877 12.2417 22.963 12.375C22.9383 12.5083 22.9007 12.6333 22.85 12.75L19.85 19.8C19.7 20.1333 19.45 20.4167 19.1 20.65C18.75 20.8833 18.3833 21 18 21ZM6 8V21H2V8H6Z"
+                      fill="black" />
+                  </svg>10
+                </p>
+                <p class="flex items-center gap-2 text-323232 text-sm lg:text-base font-normal">
+                  <svg class="size-4 lg:size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M17.462 4.00331H7.423V15.0033L13.693 21.1953L14.135 20.7533C14.2257 20.662 14.3023 20.5453 14.365 20.4033C14.4277 20.2613 14.4587 20.1306 14.458 20.0113V19.8533L13.435 15.0033H20.385C20.803 15.0033 21.1763 14.8386 21.505 14.5093C21.8337 14.18 21.9987 13.806 22 13.3873V12.1573C22 12.066 21.99 11.9666 21.97 11.8593C21.95 11.752 21.9227 11.6526 21.888 11.5613L19.158 5.08731C19.0207 4.77998 18.7897 4.52231 18.465 4.31431C18.141 4.10698 17.8067 4.00331 17.462 4.00331ZM8.423 5.00331H17.462C17.6027 5.00331 17.7467 5.04165 17.894 5.11831C18.042 5.19565 18.1543 5.32398 18.231 5.50331L21 12.0033V13.3873C21 13.5673 20.9423 13.715 20.827 13.8303C20.7117 13.9456 20.5643 14.0033 20.385 14.0033H12.192L13.35 19.4643L8.423 14.5763V5.00331ZM7.423 15.0033V14.0033H4V5.00331H7.423V4.00331H3V15.0033H7.423Z"
+                      fill="black" />
+                  </svg>0
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+
+    </div>
+  </div>
+</div>
+
+<app-review-popup (reviewSubmitted)="addReview($event)" #reviewPopup></app-review-popup>
+
+<!-- Image Zoom Modal -->
+<div *ngIf="isImageModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90">
+  <div class="relative w-full max-w-6xl">
+    <!-- Close Button -->
+    <button (click)="closeImageModal()"
+      class="absolute top-3 right-3 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 z-50">
+      ✕
+    </button>
+
+    <!-- Swiper with Zoom -->
+    <swiper-container class="w-full h-[80vh]" [zoom]="true" [navigation]="true" [pagination]="{ clickable: true }"
+      [initialSlide]="activeImageIndex" [centeredSlides]="true" [spaceBetween]="10" [loop]="true">
+      <swiper-slide *ngFor="let img of modalImages">
+        <div class="swiper-zoom-container flex items-center justify-center">
+          <img [src]="img" class="object-contain max-h-[80vh] w-auto" />
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div>

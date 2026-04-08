@@ -1,0 +1,22 @@
+<div class="w-full mx-auto py-5 lg:py-8 px-2 lg:px-5 xl:px-16 flex flex-col items-center justify-center">
+  <!-- section title -->
+  <h2 class="text-center capitalize text-141313 font-normal text-lg/tight sm:text-2xl/tight lg:text-3xl/tight xl:text-6xl/tight">
+    What We Do</h2>
+  <p class="text-center text-0000009e text-xs sm:text-sm lg:text-lg font-normal mt-2 w-full md:w-1/2">We are more than a
+    marketplace, we are a gemstone ecosystem that streamlines your entire buying process.</p>
+
+  <!-- what we do -->
+  <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 xl:gap-8 mt-6 lg:mt-12">
+    <div *ngFor="let wedo of wedos"
+      class="text-center bg-white border border-c241b678 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="bg-212121 text-center p-2 lg:p-4">
+        <p class="font-marcellus text-sm sm:text-base lg:text-lg xl:text-xl text-white">
+          {{ wedo.title }}
+        </p>
+      </div>
+      <div class="text-center p-2 lg:p-4">
+        <p class="text-323232 text-xs sm:text-sm lg:text-base font-normal">{{ wedo.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

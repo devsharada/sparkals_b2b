@@ -1,0 +1,47 @@
+<div class="bg-212121 w-full sm:flex items-center justify-end">
+  <div class="relative py-5 lg:py-8 px-2 lg:px-5 xl:px-16 sm:flex items-center justify-center gap-6">
+  <div class="z-10 w-full sm:w-2/3">
+    <!-- section title -->
+    <h1
+      class="text-white capitalize font-normal text-lg/tight sm:text-2xl/tight lg:text-3xl/tight xl:text-6xl/tight">
+      Every Heera Tells a Story of Brilliance</h1>
+
+    <p class="text-aaa text-xs sm:text-sm lg:text-lg font-normal mt-4">Born in the heart of the earth, a Heera carries the brilliance of a thousand stars, destined to shine for generations.</p>
+  </div>
+
+
+</div>
+<div class="w-1/2 text-center hidden sm:block">
+    <img class="w-full" src="/assets/images/home/diamonds.png" alt="gemstone">
+  </div>
+   <div class="absolute inset-y-0 right-0 w-auto text-center sm:hidden opacity-25">
+    <img class="w-full" src="/assets/images/home/diamonds.png" alt="gemstone">
+  </div>
+</div>
+
+
+<div class="w-full mx-auto px-2 lg:px-5 xl:px-16 mt-3">
+  <app-breadcrumb [items]="[
+    { label: 'Home', url: '/home' },
+    { label: 'Products' },
+  ]">
+  </app-breadcrumb>
+
+  <div class="py-5 lg:py-6">
+    <div class="w-full flex items-end justify-start gap-2 ">
+      <h2 class="font-normal capitalize text-323232 text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-4xl mb-3 lg:mb-7">
+        Gemstone</h2>
+      <p class="font-medium text-0000009e text-xs sm md:text-sm lg:text-base xl:text-lg mb-3 lg:mb-7">(201 results)</p>
+
+    </div>
+    <!-- filter vertically -->
+    <app-filter></app-filter>
+
+    <!-- all products -->
+    <app-all-products></app-all-products>
+
+  </div>
+</div>
+
+<app-features></app-features>
+<app-request-demo></app-request-demo>

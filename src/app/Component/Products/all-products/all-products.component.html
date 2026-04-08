@@ -1,0 +1,72 @@
+    <!-- all products -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <ng-container *ngFor="let item of products1; let i = index">
+        <!-- product card -->
+        <div *ngIf="i < 12 || i >= 12"
+          class="relative group border border-d3d3d3 rounded-md overflow-hidden transition-shadow duration-300">
+          <!-- your existing product card code -->
+          <a [routerLink]="item.link">
+            <div class="relative">
+              <!-- product image -->
+              <div class="aspect-square overflow-hidden border-b border-d3d3d3 relative">
+                <!-- Default Image -->
+                <img [src]="item.image1" [alt]="item.name"
+                  class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+
+                <!-- Hover Image -->
+                <img [src]="item.image2" [alt]="item.name"
+                  class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+              <!-- cart icon -->
+              <button class="cursor-pointer absolute -bottom-5 right-2 z-10">
+                <p
+                  class="size-8 sm:size-10 flex items-center justify-center bg-white rounded-full shadow-md border border-d3d3d3 hover:scale-105 transition duration-200">
+                  <svg class="size-5 sm:size-6" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 15L9 9.5C9 7.01472 11.0147 5 13.5 5V5C15.9853 5 18 7.01472 18 9.5L18 15"
+                      stroke="#323232" stroke-linecap="round" />
+                    <path
+                      d="M4.22244 14.9508C4.35409 13.1954 4.41992 12.3177 4.99532 11.7839C5.57071 11.25 6.45088 11.25 8.21123 11.25H18.7888C20.5491 11.25 21.4293 11.25 22.0047 11.7839C22.5801 12.3177 22.6459 13.1954 22.7776 14.9508L23.4638 24.1004C23.5393 25.107 23.577 25.6103 23.2803 25.9302C22.9835 26.25 22.4788 26.25 21.4694 26.25H5.53062C4.5212 26.25 4.0165 26.25 3.71974 25.9302C3.42298 25.6103 3.46072 25.107 3.53622 24.1004L4.22244 14.9508Z"
+                      stroke="black" />
+                  </svg>
+                </p>
+              </button>
+            </div>
+
+            <!-- wishlist icon -->
+            <button class="cursor-pointer absolute top-2 right-2 z-10">
+              <p
+                class="size-8 sm:size-10 flex items-center justify-center bg-white rounded-full hover:shadow-md hover:scale-105 transition duration-200">
+                <svg class="size-5 sm:size-6" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M53.7499 21.3455C53.7499 14.2781 48.0205 8.54883 40.9531 8.54883C36.3003 8.54883 32.2396 11.0403 29.9999 14.7538C27.76 11.0403 23.6995 8.54883 19.0466 8.54883C11.9792 8.54883 6.25 14.2781 6.25 21.3455C6.25 22.9611 6.562 24.5005 7.10825 25.9238C11.3396 38.0948 30 51.4507 30 51.4507C30 51.4507 48.6603 38.0948 52.8918 25.9238C53.438 24.5006 53.7499 22.9611 53.7499 21.3455Z"
+                    stroke="#323232" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </p>
+            </button>
+
+            <!-- product name, weight & clarity -->
+            <div class="bg-transparent p-3 space-y-2">
+               <!-- product  price -->
+              <!-- <p class="space-x-2">
+                <span class="font-normal text-lg lg:text-2xl text-323232">{{ item.price }}</span>
+              </p> -->
+              <p class="text-0000009e font-normal text-xs">Weight: {{ item.weight }}</p>
+              <p class="text-0000009e font-normal text-xs">Clarity Grade: {{ item.clarity }}</p>
+              <p class="capitalize text-[13px] lg:text-[15px] font-normal font-marcellus truncate text-323232">{{ item.name
+                }}
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <!-- banner after 12th card -->
+        <div *ngIf="(i + 1) % 12 === 0" class="col-span-2 sm:col-span-3">
+          <a routerLink="" class="w-full h-full cursor-pointer">
+            <img class="w-full h-full object-contain" [src]="getBannerImage(i)"
+              [alt]="'banner after ' + (i + 1) + ' cards'">
+          </a>
+        </div>
+
+      </ng-container>
+    </div>
+

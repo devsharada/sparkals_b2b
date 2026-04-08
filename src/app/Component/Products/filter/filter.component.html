@@ -1,0 +1,465 @@
+<div class="relative w-full my-4">
+
+  <!-- main filter category -->
+  <div class="flex items-center justify-between py-2 ">
+    <!-- Left Arrow -->
+    <button (click)="scrollLeft()"
+      class="absolute top-3.5 left-0 cursor-pointer swiper-button-prev1 size-6 sm:size-7 flex items-center justify-center text-xl sm:text-2xl bg-white text-323232 shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+      <svg width="8" height="14" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M11.2258 23.6955L0.354838 13.3602C0.225806 13.2372 0.134623 13.1039 0.08129 12.9604C0.0270964 12.8168 0 12.663 0 12.499C0 12.3349 0.0270964 12.1811 0.08129 12.0376C0.134623 11.894 0.225806 11.7607 0.354838 11.6377L11.2258 1.2717C11.5269 0.984609 11.9032 0.841064 12.3548 0.841064C12.8065 0.841064 13.1935 0.994863 13.5161 1.30246C13.8387 1.61006 14 1.96892 14 2.37905C14 2.78917 13.8387 3.14804 13.5161 3.45563L4.03226 12.499L13.5161 21.5423C13.8172 21.8294 13.9677 22.1829 13.9677 22.6029C13.9677 23.0237 13.8065 23.3879 13.4839 23.6955C13.1613 24.0031 12.7849 24.1569 12.3548 24.1569C11.9247 24.1569 11.5484 24.0031 11.2258 23.6955Z"
+          fill="#760909" />
+      </svg>
+    </button>
+
+    <!-- Scrollable Filter catogory Pills -->
+    <div #scrollContainer class="flex overflow-x-auto space-x-2 no-scrollbar mx-9 pb-3">
+      <button *ngFor="let filter of filters" (click)="toggleCategory(filter)"
+        class="flex items-center justify-start space-x-2 pl-2 pr-4 py-1.5 rounded-4xl bg-white border border-9d9d9d text-sm font-medium text-gray-700 hover:bg-gray-100 transition">
+        <span
+          class="size-7 p-1 bg-00000036 text-0000009e text-lg font-bold rounded-full flex items-center justify-center"><svg
+            width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M14.7904 8.45842H8.54036V14.2084H6.45703V8.45842H0.207031V6.54175H6.45703V0.791748H8.54036V6.54175H14.7904V8.45842Z"
+              fill="black" />
+          </svg>
+        </span>
+        <p class="text-0000009e whitespace-nowrap">{{ filter }}</p>
+      </button>
+    </div>
+
+    <!-- Right Arrow -->
+    <button (click)="scrollRight()"
+      class="absolute top-3.5 right-0 cursor-pointer swiper-button-next1 size-6 sm:size-7 flex items-center justify-center text-xl sm:text-2xl bg-white text-323232 shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+      <svg width="8" height="14" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M2.77419 1.30355L13.6452 11.6388C13.7742 11.7618 13.8654 11.8951 13.9187 12.0387C13.9729 12.1822 14 12.336 14 12.5001C14 12.6641 13.9729 12.8179 13.9187 12.9615C13.8654 13.105 13.7742 13.2383 13.6452 13.3613L2.77419 23.7273C2.47312 24.0144 2.09677 24.158 1.64516 24.158C1.19355 24.158 0.806452 24.0042 0.483871 23.6966C0.16129 23.389 0 23.0301 0 22.62C0 22.2098 0.16129 21.851 0.483871 21.5434L9.96774 12.5001L0.483871 3.45673C0.182796 3.16964 0.0322571 2.8161 0.0322571 2.39613C0.0322571 1.97534 0.193548 1.61115 0.516129 1.30355C0.838709 0.995955 1.21505 0.842157 1.64516 0.842157C2.07527 0.842157 2.45161 0.995955 2.77419 1.30355Z"
+          fill="#760909" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- filter category features -->
+  <div *ngIf="activeCategory"
+    class="relative flex items-center justify-center max-w-[95%] mx-auto w-full rounded-md shadow-md border border-d3d3d3 p-4">
+    <!-- Left Arrow -->
+    <button
+      *ngIf="activeCategory !== 'Price' && activeCategory !== 'Location' && activeCategory !== 'Carat' && activeCategory !== 'Measurement'"
+      (click)="scrollFilterLeft()"
+      class="absolute top-3 left-2 cursor-pointer swiper-button-prev1 size-6 sm:size-7 flex items-center justify-center text-xl sm:text-2xl bg-white text-323232 shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+      <svg width="8" height="14" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M11.2258 23.6955L0.354838 13.3602C0.225806 13.2372 0.134623 13.1039 0.08129 12.9604C0.0270964 12.8168 0 12.663 0 12.499C0 12.3349 0.0270964 12.1811 0.08129 12.0376C0.134623 11.894 0.225806 11.7607 0.354838 11.6377L11.2258 1.2717C11.5269 0.984609 11.9032 0.841064 12.3548 0.841064C12.8065 0.841064 13.1935 0.994863 13.5161 1.30246C13.8387 1.61006 14 1.96892 14 2.37905C14 2.78917 13.8387 3.14804 13.5161 3.45563L4.03226 12.499L13.5161 21.5423C13.8172 21.8294 13.9677 22.1829 13.9677 22.6029C13.9677 23.0237 13.8065 23.3879 13.4839 23.6955C13.1613 24.0031 12.7849 24.1569 12.3548 24.1569C11.9247 24.1569 11.5484 24.0031 11.2258 23.6955Z"
+          fill="#760909" />
+      </svg>
+    </button>
+
+    <!-- filter category feature div -->
+    <div #scrollFilterContainer
+      class="flex items-center overflow-x-auto gap-4 md:gap-7 lg:gap-14 mx-9 scroll-smooth no-scrollbar">
+      <!-- Shapes -->
+      <ng-container *ngIf="activeCategory === 'Shapes'">
+        <div *ngFor="let shape of shapes" class="cursor-pointer py-1" (click)="toggleShape(shape)">
+          <div class="flex items-start justify-start gap-x-2">
+            <input type="checkbox" [checked]="shape.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); toggleShape(shape)" />
+            <div class="space-y-2">
+              <div class="size-16">
+                <img [src]="shape.icon" [alt]="shape.name" class="size-full" />
+              </div>
+              <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+                shape.name }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Colors -->
+      <ng-container *ngIf="activeCategory === 'Color'">
+        <div *ngFor="let color of colors" class="cursor-pointer py-1" (click)="color.selected = !color.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="color.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); color.selected = !color.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232  text-center capitalize">{{ color.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Carat -->
+      <ng-container *ngIf="activeCategory === 'Carat'">
+        <div class="cursor-pointer" (click)="carat.selected = !carat.selected">
+
+          <div class="flex items-center justify-center gap-2">
+            <div class="relative flex-1">
+              <input type="text"
+                class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                placeholder=" " />
+              <label
+                class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">From</label>
+            </div>
+            <div class="relative flex-1">
+              <input type="text"
+                class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                placeholder=" " />
+              <label
+                class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">To</label>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Clarity -->
+      <ng-container *ngIf="activeCategory === 'Clarity'">
+        <div *ngFor="let clarity of clarities" class="cursor-pointer py-1"
+          (click)="clarity.selected = !clarity.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="clarity.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); clarity.selected = !clarity.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+              clarity.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Lab -->
+      <ng-container *ngIf="activeCategory === 'Lab'">
+        <div *ngFor="let lab of labs" class="cursor-pointer py-1" (click)="lab.selected = !lab.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="lab.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); lab.selected = !lab.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232  text-center capitalize">{{ lab.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- shortcut -->
+      <ng-container *ngIf="activeCategory === 'Shortcut'">
+        <div *ngFor="let shortcut of shortcuts" class="cursor-pointer py-1"
+          (click)="shortcut.selected = !shortcut.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="shortcut.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); shortcut.selected = !shortcut.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232  text-center capitalize">{{ shortcut.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Finish -->
+      <ng-container *ngIf="activeCategory === 'Finish'">
+        <div>
+          <p class="text-sm/tight md:text-base/tight font-semibold text-000000 text-center capitalize mb-4">Cut</p>
+          <div class="flex items-start gap-10">
+            <div *ngFor="let cut of cuts" class="cursor-pointer py-1" (click)="cut.selected = !cut.selected">
+              <div class="flex items-start gap-x-2">
+                <input type="checkbox" [checked]="cut.selected" class="mb-2 size-4"
+                  (click)="$event.stopPropagation(); cut.selected = !cut.selected" />
+                <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+                  cut.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-x border-d3d3d3 px-14">
+          <p class="text-sm/tight md:text-base/tight font-semibold text-000000 text-center capitalize mb-4">Polish</p>
+          <div class="flex items-start gap-10">
+            <div *ngFor="let polish of polishes" class="cursor-pointer py-1"
+              (click)="polish.selected = !polish.selected">
+              <div class="flex items-start gap-x-2">
+                <input type="checkbox" [checked]="polish.selected" class="mb-2 size-4"
+                  (click)="$event.stopPropagation(); polish.selected = !polish.selected" />
+                <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+                  polish.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm/tight md:text-base/tight font-semibold text-000000 text-center capitalize mb-4">symmetry</p>
+          <div class="flex items-start gap-10">
+            <div *ngFor="let symmetry of symmetries" class="cursor-pointer py-1"
+              (click)="symmetry.selected = !symmetry.selected">
+              <div class="flex items-start gap-x-2">
+                <input type="checkbox" [checked]="symmetry.selected" class="mb-2 size-4"
+                  (click)="$event.stopPropagation(); symmetry.selected = !symmetry.selected" />
+                <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+                  symmetry.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Intensity -->
+      <ng-container *ngIf="activeCategory === 'Intensity'">
+        <div *ngFor="let intensity of intensities" class="cursor-pointer py-1"
+          (click)="intensity.selected = !intensity.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="intensity.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); intensity.selected = !intensity.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+              intensity.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Location -->
+      <ng-container *ngIf="activeCategory === 'Location'">
+        <div class="w-64">
+          <label class="text-sm/tight md:text-base/tight font-semibold text-000000 text-center capitalize mb-4">Select Locations</label>
+          <select multiple [(ngModel)]="selectedLocations"
+            class="w-full text-sm/tight md:text-base/tight text-323232 capitalize p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-0">
+            <option *ngFor="let location of locations" [value]="location">
+              {{ location }}
+            </option>
+          </select>
+
+          <!-- Show selected values -->
+          <div class="mt-3">
+            <p class="font-medium">Selected:</p>
+            <ul class="list-disc list-inside">
+              <li class="text-sm/tight md:text-base/normal text-323232 capitalize" *ngFor="let loc of selectedLocations">{{ loc }}</li>
+            </ul>
+          </div>
+        </div>
+
+      </ng-container>
+
+
+
+      <!-- Fluorescence -->
+      <ng-container *ngIf="activeCategory === 'Fluorescence'">
+        <div *ngFor="let fluorescence of fluorescences" class="cursor-pointer py-1"
+          (click)="fluorescence.selected = !fluorescence.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="fluorescence.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); fluorescence.selected = !fluorescence.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+              fluorescence.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Shady & Milky -->
+      <ng-container *ngIf="activeCategory === 'Shady & Milky'">
+        <div>
+          <div class="mb-4">
+            <p class="text-sm/tight md:text-base/tight font-semibold text-000000 text-center capitalize mb-4">Shady</p>
+            <div class="flex items-start justify-center gap-10">
+              <div *ngFor="let shady of shadies" class="cursor-pointer py-1" (click)="shady.selected = !shady.selected">
+                <div class="flex items-start gap-x-2">
+                  <input type="checkbox" [checked]="shady.selected" class="mb-2 size-4"
+                    (click)="$event.stopPropagation(); shady.selected = !shady.selected" />
+                  <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+                    shady.name }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm/tight md:text-base/tight font-semibold text-000000 text-center capitalize mb-4">Milky</p>
+            <div class="flex items-start justify-center gap-10">
+              <div *ngFor="let milky of milkies" class="cursor-pointer py-1" (click)="milky.selected = !milky.selected">
+                <div class="flex items-start gap-x-2">
+                  <input type="checkbox" [checked]="milky.selected" class="mb-2 size-4"
+                    (click)="$event.stopPropagation(); milky.selected = !milky.selected" />
+                  <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+                    milky.name }}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- price -->
+      <ng-container *ngIf="activeCategory === 'Price'">
+        <div class="w-full">
+          <!-- Track -->
+          <div class="relative h-1 bg-0000002b rounded mt-3">
+            <div class="absolute h-full bg-212121 rounded" [ngStyle]="{
+        left: (minValue / max) * 100 + '%',
+        right: 100 - (maxValue / max) * 100 + '%'
+      }">
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="relative">
+            <!-- Min (left) -->
+            <input type="range" [(ngModel)]="minValue" (input)="onMinInput()" [min]="min" [max]="max" step="100"
+              class="absolute -top-1 w-full h-1 bg-transparent appearance-none" />
+
+            <!-- Max (right) -->
+            <input type="range" [(ngModel)]="maxValue" (input)="onMaxInput()" [min]="min" [max]="max" step="100"
+              class="absolute -top-1 w-full h-1 bg-transparent appearance-none" />
+          </div>
+
+          <!-- Number inputs -->
+          <div class="flex justify-center items-center gap-4 mt-4">
+            <div class="flex items-center gap-1">
+              <label class="text-sm font-medium">Min</label>
+              <input type="number" [(ngModel)]="minValue" (input)="onPriceInput('min')"
+                class="w-20 text-sm border border-d3d3d3 bg-white rounded px-1 py-1" />
+            </div>
+            <div class="flex items-center gap-1">
+              <label class="text-sm font-medium">Max</label>
+              <input type="number" [(ngModel)]="maxValue" (input)="onPriceInput('max')"
+                class="w-20 text-sm border border-d3d3d3 bg-white rounded px-1 py-1" />
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+      <!-- Measurement -->
+      <ng-container *ngIf="activeCategory === 'Measurement'">
+        <div class="w-full">
+          <!-- Measurement Length, width, height -->
+          <div class="py-3 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 border-b border-d3d3d3">
+            <div *ngFor="let measurement of measurements1" class="cursor-pointer"
+              (click)="measurement.selected = !measurement.selected">
+              <p class="text-sm/tight md:text-base/tight text-323232 capitalize mb-2">{{ measurement.name }}</p>
+              <div class="flex items-center justify-center gap-2">
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">From</label>
+                </div>
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">To</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- table, depth, ratio -->
+          <div class="py-3 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 border-b border-d3d3d3">
+            <div *ngFor="let measurement of measurements2" class="cursor-pointer"
+              (click)="measurement.selected = !measurement.selected">
+              <p class="text-sm/tight md:text-base/tight text-323232 capitalize mb-2">{{ measurement.name }}
+              </p>
+              <div class="flex items-center justify-center gap-2">
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Min</label>
+                </div>
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Max</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- crown height & angle -->
+          <div class="py-3 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 border-b border-d3d3d3">
+            <div *ngFor="let measurement of measurements3" class="cursor-pointer"
+              (click)="measurement.selected = !measurement.selected">
+              <p class="text-sm/tight md:text-base/tight text-323232 capitalize mb-2">{{ measurement.name }}
+              </p>
+              <div class="flex items-center justify-center gap-2">
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Min</label>
+                </div>
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Max</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- pavilion height & angle -->
+          <div class="py-3 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 ">
+            <div *ngFor="let measurement of measurements4" class="cursor-pointer"
+              (click)="measurement.selected = !measurement.selected">
+              <p class="text-sm/tight md:text-base/tight text-323232 capitalize mb-2">{{ measurement.name }}
+              </p>
+              <div class="flex items-center justify-center gap-2">
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Min</label>
+                </div>
+                <div class="relative flex-1">
+                  <input type="text"
+                    class="block px-2.5 pb-2 pt-2 w-full text-sm md:text-[15px] text-323232 bg-white rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-323232 peer"
+                    placeholder=" " />
+                  <label
+                    class="absolute text-sm text-0000009e duration-300 transform -translate-y-2 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Max</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Brand -->
+      <ng-container *ngIf="activeCategory === 'Brand'">
+        <div *ngFor="let brand of brands" class="cursor-pointer py-1" (click)="brand.selected = !brand.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="brand.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); brand.selected = !brand.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+              brand.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Origin -->
+      <ng-container *ngIf="activeCategory === 'Origin'">
+        <div *ngFor="let origin of origins" class="cursor-pointer py-1" (click)="origin.selected = !origin.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="origin.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); origin.selected = !origin.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+              origin.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Key to symbol -->
+      <ng-container *ngIf="activeCategory === 'Key to Symbols'">
+        <div *ngFor="let symbol of symbols" class="cursor-pointer py-1" (click)="symbol.selected = !symbol.selected">
+          <div class="flex items-start gap-x-2">
+            <input type="checkbox" [checked]="symbol.selected" class="mb-2 size-4"
+              (click)="$event.stopPropagation(); symbol.selected = !symbol.selected" />
+            <p class="text-sm/tight md:text-base/tight text-323232 text-center capitalize whitespace-nowrap">{{
+              symbol.name }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Right Arrow -->
+    <button
+      *ngIf="activeCategory !== 'Price' && activeCategory !== 'Location' && activeCategory !== 'Carat' && activeCategory !== 'Measurement'"
+      (click)="scrollFilterRight()"
+      class="absolute top-3 right-2 cursor-pointer swiper-button-next1 size-6 sm:size-7 flex items-center justify-center text-xl sm:text-2xl bg-white text-323232 shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+      <svg width="8" height="14" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M2.77419 1.30355L13.6452 11.6388C13.7742 11.7618 13.8654 11.8951 13.9187 12.0387C13.9729 12.1822 14 12.336 14 12.5001C14 12.6641 13.9729 12.8179 13.9187 12.9615C13.8654 13.105 13.7742 13.2383 13.6452 13.3613L2.77419 23.7273C2.47312 24.0144 2.09677 24.158 1.64516 24.158C1.19355 24.158 0.806452 24.0042 0.483871 23.6966C0.16129 23.389 0 23.0301 0 22.62C0 22.2098 0.16129 21.851 0.483871 21.5434L9.96774 12.5001L0.483871 3.45673C0.182796 3.16964 0.0322571 2.8161 0.0322571 2.39613C0.0322571 1.97534 0.193548 1.61115 0.516129 1.30355C0.838709 0.995955 1.21505 0.842157 1.64516 0.842157C2.07527 0.842157 2.45161 0.995955 2.77419 1.30355Z"
+          fill="#760909" />
+      </svg>
+    </button>
+  </div>
+</div>

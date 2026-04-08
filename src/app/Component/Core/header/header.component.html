@@ -1,0 +1,251 @@
+<div class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="w-full mx-auto px-2 lg:px-5 xl:px-16 flex items-center justify-between relative">
+
+    <!-- Logo -->
+    <div>
+      <a routerLink="/home"><img class="w-36 sm:w-42 lg:w-56" src="/assets/images/home/logo.jpg" alt="brand logo"></a>
+    </div>
+
+    <!-- NAVIGATION (Desktop) -->
+    <ul class="font-marcellus hidden md:flex gap-3 md:gap-6 lg:gap-8 xl:gap-10 relative">
+      <li *ngFor="let item of navItems" class="group cursor-pointer relative" (mouseenter)="activeMenu = item.label"
+        (mouseleave)="activeMenu = null">
+
+        <a [routerLink]="item.path"
+          routerLinkActive="after:border-b-3 after:border-black after:block after:w-full after:mt-1"
+          [routerLinkActiveOptions]="{ exact: item.label === 'Home' }"
+          class=" capitalize text-lg lg:text-xl xl:text-[22px] text-141313 font-medium py-8 block">
+          {{ item.label }}
+        </a>
+
+      </li>
+
+    </ul>
+    <!-- MOBILE MENU TOGGLE -->
+    <div class="md:hidden">
+      <button (click)="toggleMobileMenu()" class="p-1 sm:p-2 border border-e1e1e17d rounded">
+        <svg class="w-6 sm:w-6" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2.1556 8.02968C1.40696 8.02968 0.800049 8.63661 0.800049 9.38523C0.800049 10.1339 1.40696 10.7408 2.1556 10.7408V8.02968ZM23.8445 10.7408C24.5931 10.7408 25.2 10.1339 25.2 9.38523C25.2 8.63661 24.5931 8.02968 23.8445 8.02968V10.7408ZM2.1556 15.2593C1.40696 15.2593 0.800049 15.8662 0.800049 16.6149C0.800049 17.3635 1.40696 17.9704 2.1556 17.9704V15.2593ZM23.8445 17.9704C24.5931 17.9704 25.2 17.3635 25.2 16.6149C25.2 15.8662 24.5931 15.2593 23.8445 15.2593V17.9704ZM2.1556 0.800049C1.40696 0.800049 0.800049 1.40696 0.800049 2.1556C0.800049 2.90425 1.40696 3.51116 2.1556 3.51116V0.800049ZM23.8445 3.51116C24.5931 3.51116 25.2 2.90425 25.2 2.1556C25.2 1.40696 24.5931 0.800049 23.8445 0.800049V3.51116ZM2.1556 10.7408H23.8445V8.02968H2.1556V10.7408ZM2.1556 17.9704H23.8445V15.2593H2.1556V17.9704ZM2.1556 3.51116H23.8445V0.800049H2.1556V3.51116Z"
+            fill="#141313" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Right side buttons -->
+      <div class="flex items-center justify-end gap-2 xl:gap-4">
+        <!-- wishlist icon -->
+        <a routerLink="/wishlist" class="relative">
+          <svg class="size-7 sm:size-9" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M53.7499 21.3455C53.7499 14.2781 48.0205 8.54883 40.9531 8.54883C36.3003 8.54883 32.2396 11.0403 29.9999 14.7538C27.76 11.0403 23.6995 8.54883 19.0466 8.54883C11.9792 8.54883 6.25 14.2781 6.25 21.3455C6.25 22.9611 6.562 24.5005 7.10825 25.9238C11.3396 38.0948 30 51.4507 30 51.4507C30 51.4507 48.6603 38.0948 52.8918 25.9238C53.438 24.5006 53.7499 22.9611 53.7499 21.3455Z"
+              stroke="#323232" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <!-- quantity -->
+          <div class="absolute top-0 -right-1 size-4 sm:size-5 rounded-full bg-29b369 flex items-center justify-center">
+            <p class="text-white font-semibold text-[9px] sm:text-[10px]">0</p>
+          </div>
+        </a>
+
+        <!-- user Login icon -->
+        <div class="hidden sm:flex">
+          <div class="relative" (mouseenter)="isAccordionOpen = true" (mouseleave)="isAccordionOpen = false">
+            <button
+              class="cursor-pointer text-black hover:bg-323232 hover:text-white font-normal text-xs/tight sm:text-sm md:text-base lg:text-[19px] xl:text-xl py-1 px-1 rounded-md group">
+              <svg class="size-7 sm:size-9 stroke-323232 group-hover:stroke-white" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <circle cx="12" cy="8" r="3.5" stroke-linecap="round"></circle>
+                  <path
+                    d="M4.84913 16.9479C5.48883 14.6034 7.91473 13.5 10.345 13.5H13.655C16.0853 13.5 18.5112 14.6034 19.1509 16.9479C19.282 17.4287 19.3868 17.9489 19.4462 18.5015C19.5052 19.0507 19.0523 19.5 18.5 19.5H5.5C4.94772 19.5 4.49482 19.0507 4.55382 18.5015C4.6132 17.9489 4.71796 17.4287 4.84913 16.9479Z"
+                    stroke-linecap="round"></path>
+                </g>
+              </svg></button>
+            <!-- login & signup button -->
+            <div *ngIf="isAccordionOpen"
+              class="absolute left-1/2 -translate-x-1/2 shadow-md bg-white w-[320px] border border-d3d3d3">
+              <div class="h-3 bg-323232"></div>
+              <div class="p-8 text-center flex flex-col gap-4">
+                <p class="font-normal text-323232 text-lg">Already have an account?</p>
+                <button (click)="openAuth('login')"
+                  class="cursor-pointer w-[200px] mx-auto border border-black text-black bg-white hover:bg-323232 hover:text-white font-normal text-xs/tight sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 px-1 sm:px-2 lg:px-5 rounded-md">
+                  Login
+                </button>
+                <p class="font-normal text-323232 text-lg">New Customer?</p>
+                <button (click)="openAuth('register')"
+                  class="cursor-pointer w-[200px] mx-auto border border-black text-black bg-white hover:bg-323232 hover:text-white font-normal text-xs/tight sm:text-sm md:text-base lg:text-lg py-1 sm:py-1.5 px-1 sm:px-2 lg:px-5 rounded-md">
+                  Sign Up Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- cart icon -->
+        <a routerLink="/cart" class="relative">
+          <svg class="size-7 sm:size-9" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 15L9 9.5C9 7.01472 11.0147 5 13.5 5V5C15.9853 5 18 7.01472 18 9.5L18 15" stroke="#323232"
+              stroke-linecap="round" />
+            <path
+              d="M4.22244 14.9508C4.35409 13.1954 4.41992 12.3177 4.99532 11.7839C5.57071 11.25 6.45088 11.25 8.21123 11.25H18.7888C20.5491 11.25 21.4293 11.25 22.0047 11.7839C22.5801 12.3177 22.6459 13.1954 22.7776 14.9508L23.4638 24.1004C23.5393 25.107 23.577 25.6103 23.2803 25.9302C22.9835 26.25 22.4788 26.25 21.4694 26.25H5.53062C4.5212 26.25 4.0165 26.25 3.71974 25.9302C3.42298 25.6103 3.46072 25.107 3.53622 24.1004L4.22244 14.9508Z"
+              stroke="black" />
+          </svg>
+          <!-- quantity -->
+          <div class="absolute top-0 -right-1 size-4 sm:size-5 rounded-full bg-29b369 flex items-center justify-center">
+            <p class="text-white font-semibold text-[9px] sm:text-[10px]">0</p>
+          </div>
+        </a>
+      </div>
+  </div>
+
+  <!-- DESKTOP MEGA MENU -->
+  <div *ngIf="activeMenu === 'Products'"
+    class="hidden md:block absolute left-0 top-full w-screen bg-white shadow-lg border-t border-e1e1e17d z-40"
+    (mouseenter)="activeMenu = 'Products'" (mouseleave)="activeMenu = null">
+    <div class="grid grid-cols-5 w-full">
+      <!-- Loop through categories -->
+      <div *ngFor="let category of categories" class="border-b border-r border-e1e1e17d">
+        <p class="font-marcellus font-normal text-center text-141313 text-lg p-4 border-b border-e1e1e17d">
+          {{ category.title }}
+        </p>
+        <ul class="space-y-4 px-4 py-6 text-000000b2 text-[15px]">
+          <li *ngFor="let item of category.items" class="group">
+            <a [routerLink]="item.path"
+              class="group-hover:text-black group-hover:bg-f4f4f4 group-hover:shadow-md px-4 rounded-md flex items-center py-2 gap-2">
+              <div class="rounded-full p-1.5 size-10 bg-f4f4f4 group-hover:bg-white group-hover:shadow-md">
+                <img class="w-full h-full" [src]="item.image" [alt]="item.alt">
+              </div>
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Image -->
+      <div class="p-4">
+        <img src="/assets/images/home/gemstone-jewellery.png" alt="Jewellery" class="w-full object-cover rounded">
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE OFFCANVAS -->
+  <div *ngIf="isMobileMenuOpen" class="fixed inset-0 z-50 flex">
+
+    <!-- Overlay -->
+    <div class="fixed inset-0 bg-black/40 transition-opacity duration-300"
+      [ngClass]="{ 'opacity-100': isMobileMenuOpen, 'opacity-0 pointer-events-none': !isMobileMenuOpen }"
+      (click)="toggleMobileMenu()"></div>
+
+    <!-- Sidebar -->
+    <div
+      class="relative w-72 max-w-xs bg-white shadow-lg h-full z-50 overflow-y-auto transform transition-transform duration-300 translate-x-full"
+      [ngClass]="{ 'translate-x-0': isMobileMenuOpen, 'translate-x-full': !isMobileMenuOpen }">
+
+
+      <!-- Close button -->
+      <button (click)="toggleMobileMenu()" class="cursor-pointer absolute top-2 right-4 text-gray-600 hover:text-black">
+        ✕
+      </button>
+
+      <!-- Navigation -->
+      <ul class="flex flex-col mt-8">
+
+        <!-- Loop nav items -->
+        <li *ngFor="let item of navItems" class="border-b border-e1e1e17d">
+
+          <!-- Accordion only for Products -->
+          <ng-container *ngIf="item.label === 'Products'; else normalLink">
+            <!-- Products header -->
+            <p (click)="toggleAccordion()"
+              class="text-141313 w-full cursor-pointer text-left text-sm px-4 py-2 flex justify-between items-center">
+
+              {{ item.label }}
+
+              <span class="ml-2">
+                <ng-container *ngIf="isAccordionOpen; else plusIcon">
+                  <!-- Minus Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                  </svg>
+                </ng-container>
+                <ng-template #plusIcon>
+                  <!-- Plus Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                </ng-template>
+              </span>
+            </p>
+
+
+            <!-- Show nested categories -->
+            <div *ngIf="isAccordionOpen" class="px-4 pb-2 pr-2">
+              <div *ngFor="let category of categories; let i = index" class="border-b border-e1e1e17d">
+
+                <!-- Category header -->
+                <p (click)="toggleCategory(i)"
+                  class="w-full cursor-pointer text-left text-sm py-2 flex justify-between items-center">
+                  <span class="font-normal text-323232 text-[13px]">{{ category.title }}</span>
+
+                  <span class="ml-2">
+                    <ng-container *ngIf="openCategoryIndex === i; else plusIcon">
+                      <!-- Minus Icon -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                      </svg>
+                    </ng-container>
+                    <ng-template #plusIcon>
+                      <!-- Plus Icon -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                      </svg>
+                    </ng-template>
+                  </span>
+                </p>
+
+                <!-- Category items -->
+                <div *ngIf="openCategoryIndex === i" class="pb-2">
+                  <ul class="space-y-1.5">
+                    <li *ngFor="let sub of category.items">
+                      <a [routerLink]="sub.path" (click)="toggleMobileMenu()"
+                        class="cursor-pointer group-hover:text-323232 group-hover:bg-f4f4f4 text-xs group-hover:shadow-md px-2 rounded-md flex items-center py-1 gap-1.5">
+                        <div class="rounded-full p-1 size-6 bg-f4f4f4 group-hover:bg-white group-hover:shadow-md">
+                          <img class="w-full h-full" [src]="sub.image" [alt]="sub.alt">
+                        </div>
+
+                        {{ sub.label }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <!-- Normal nav links -->
+          <ng-template #normalLink>
+            <a [routerLink]="item.path" (click)="toggleMobileMenu()"
+              class="cursor-pointer block px-4 py-2 text-sm text-141313">{{
+              item.label }}</a>
+          </ng-template>
+        </li>
+
+        <!--  Mobile Login -->
+        <li class="px-4 py-4">
+          <button (click)="openAuth('login'); toggleMobileMenu()"
+            class="w-full sm:hidden cursor-pointer text-center text-black font-medium text-base py-2 border border-black rounded-md">
+            Login
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-auth [isOpen]="isAuthOpen" [activeTab]="activeAuthTab" (close)="closeAuth()"></app-auth>

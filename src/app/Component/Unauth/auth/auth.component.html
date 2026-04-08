@@ -1,0 +1,25 @@
+<div *ngIf="isOpen" (click)="onClose()" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+  <div (click)="$event.stopPropagation()" class="bg-white w-full max-w-2xl mx-auto rounded-lg shadow-lg relative overflow-hidden">
+
+    <!-- Close button -->
+    <button (click)="onClose()" class="absolute top-1 right-1 text-gray-600 hover:text-black hover:bg-f9f9f9 px-2 py-1 rounded-md text-xl">
+      ✕
+    </button>
+
+    <div class="sm:flex w-full">
+      <!-- Left side image -->
+      <div class="hidden w-full sm:w-2/5 sm:flex">
+        <img class="w-full h-full object-cover" src="/assets/images/home/login-bg.png" alt="login">
+      </div>
+
+      <!-- Right side (login / register forms) -->
+      <div class="w-full sm:w-3/5 p-6 flex flex-col justify-center">
+        <app-login *ngIf="activeTab === 'login'" (registerClick)="switchToRegister()" (forgotPasswordClick)="switchToForgotPassword()" ></app-login>
+        <app-register *ngIf="activeTab === 'register'" (loginClick)="switchToLogin()"></app-register>
+        <app-forgot-password *ngIf="activeTab === 'forgotPassword'" (loginClick)="switchToLogin()" (verifyOtpClick)="switchToVerifyOtp()"></app-forgot-password>
+        <app-verify-otp *ngIf="activeTab === 'verifyOtp'" (forgotPasswordClick)="switchToForgotPassword()" (updatePasswordClick)="switchToUpdatePassword()"></app-verify-otp>
+        <app-update-password *ngIf="activeTab === 'updatePassword'" (loginClick)="switchToLogin()"></app-update-password>
+      </div>
+    </div>
+  </div>
+</div>

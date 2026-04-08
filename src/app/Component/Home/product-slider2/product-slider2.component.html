@@ -1,0 +1,97 @@
+<div class="w-full mx-auto py-5 lg:py-8 px-2 lg:px-5 xl:px-16">
+  <!-- title section -->
+  <div class="flex items-end justify-between">
+  <h3
+    class="clipped-box text-base sm:text-lg md:text-xl lg:text-2xl capitalize font-normal text-white tracking-[1.5px]">
+    Diamond Collections
+  </h3>
+  <!-- view all button -->
+  <a routerLink="" class="block font-normal text-323232 text-base md:text-lg capitalize hover:underline">View all</a>
+  </div>
+
+  <!-- product slider -->
+  <div class="relative mt-4 sm:mt-6 md:mt-8">
+    <!-- Navigation Buttons -->
+     <div class="absolute left-0 lg:-left-4 xl:-left-10 top-1/2 -translate-y-1/2 z-10">
+      <button
+        class="cursor-pointer swiper-button-prev2 size-7 sm:size-9 flex items-center justify-center text-xl sm:text-2xl bg-fcf0ff text-323232 hover:shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+        <svg width="10" height="18" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.2258 23.6955L0.354838 13.3602C0.225806 13.2372 0.134623 13.1039 0.08129 12.9604C0.0270964 12.8168 0 12.663 0 12.499C0 12.3349 0.0270964 12.1811 0.08129 12.0376C0.134623 11.894 0.225806 11.7607 0.354838 11.6377L11.2258 1.2717C11.5269 0.984609 11.9032 0.841064 12.3548 0.841064C12.8065 0.841064 13.1935 0.994863 13.5161 1.30246C13.8387 1.61006 14 1.96892 14 2.37905C14 2.78917 13.8387 3.14804 13.5161 3.45563L4.03226 12.499L13.5161 21.5423C13.8172 21.8294 13.9677 22.1829 13.9677 22.6029C13.9677 23.0237 13.8065 23.3879 13.4839 23.6955C13.1613 24.0031 12.7849 24.1569 12.3548 24.1569C11.9247 24.1569 11.5484 24.0031 11.2258 23.6955Z"
+            fill="black" />
+        </svg>
+      </button>
+    </div>
+    <div class="absolute right-0 lg:-right-4 xl:-right-10 top-1/2 -translate-y-1/2 z-10">
+      <button
+        class="cursor-pointer swiper-button-next2 size-7 sm:size-9 flex items-center justify-center text-xl sm:text-2xl bg-fcf0ff text-323232 hover:shadow-md hover:bg-white border border-0000002b rounded-full p-1">
+        <svg width="10" height="18" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M2.77419 1.30355L13.6452 11.6388C13.7742 11.7618 13.8654 11.8951 13.9187 12.0387C13.9729 12.1822 14 12.336 14 12.5001C14 12.6641 13.9729 12.8179 13.9187 12.9615C13.8654 13.105 13.7742 13.2383 13.6452 13.3613L2.77419 23.7273C2.47312 24.0144 2.09677 24.158 1.64516 24.158C1.19355 24.158 0.806452 24.0042 0.483871 23.6966C0.16129 23.389 0 23.0301 0 22.62C0 22.2098 0.16129 21.851 0.483871 21.5434L9.96774 12.5001L0.483871 3.45673C0.182796 3.16964 0.0322571 2.8161 0.0322571 2.39613C0.0322571 1.97534 0.193548 1.61115 0.516129 1.30355C0.838709 0.995955 1.21505 0.842157 1.64516 0.842157C2.07527 0.842157 2.45161 0.995955 2.77419 1.30355Z"
+            fill="black" />
+        </svg>
+      </button>
+    </div>
+
+    <swiper-container #swiperRef init="false">
+      <!-- product card -->
+      <swiper-slide *ngFor="let item of products1" class="py-1">
+        <div class="relative group border border-d3d3d3 rounded-md overflow-hidden transition-shadow duration-300">
+          <a [routerLink]="item.link">
+            <div class="relative">
+              <!-- product image -->
+              <div class="aspect-square overflow-hidden border-b border-d3d3d3 relative">
+                <!-- Default Image -->
+                <img [src]="item.image1" [alt]="item.name"
+                  class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+
+                <!-- Hover Image -->
+                <img [src]="item.image2" [alt]="item.name"
+                  class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </div>
+              <!-- cart icon -->
+              <button class="cursor-pointer absolute -bottom-5 right-2 z-10">
+                <p
+                  class="size-8 sm:size-10 flex items-center justify-center bg-white rounded-full shadow-md border border-d3d3d3 hover:scale-105 transition duration-200">
+                  <svg class="size-5 sm:size-6" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 15L9 9.5C9 7.01472 11.0147 5 13.5 5V5C15.9853 5 18 7.01472 18 9.5L18 15"
+                      stroke="#323232" stroke-linecap="round" />
+                    <path
+                      d="M4.22244 14.9508C4.35409 13.1954 4.41992 12.3177 4.99532 11.7839C5.57071 11.25 6.45088 11.25 8.21123 11.25H18.7888C20.5491 11.25 21.4293 11.25 22.0047 11.7839C22.5801 12.3177 22.6459 13.1954 22.7776 14.9508L23.4638 24.1004C23.5393 25.107 23.577 25.6103 23.2803 25.9302C22.9835 26.25 22.4788 26.25 21.4694 26.25H5.53062C4.5212 26.25 4.0165 26.25 3.71974 25.9302C3.42298 25.6103 3.46072 25.107 3.53622 24.1004L4.22244 14.9508Z"
+                      stroke="black" />
+                  </svg>
+
+                </p>
+              </button>
+            </div>
+
+            <!-- wishlist icon -->
+            <button class="cursor-pointer absolute top-2 right-2 z-10">
+              <p
+                class="size-8 sm:size-10 flex items-center justify-center bg-white rounded-full hover:shadow-md hover:scale-105 transition duration-200">
+                <svg class="size-5 sm:size-6" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M53.7499 21.3455C53.7499 14.2781 48.0205 8.54883 40.9531 8.54883C36.3003 8.54883 32.2396 11.0403 29.9999 14.7538C27.76 11.0403 23.6995 8.54883 19.0466 8.54883C11.9792 8.54883 6.25 14.2781 6.25 21.3455C6.25 22.9611 6.562 24.5005 7.10825 25.9238C11.3396 38.0948 30 51.4507 30 51.4507C30 51.4507 48.6603 38.0948 52.8918 25.9238C53.438 24.5006 53.7499 22.9611 53.7499 21.3455Z"
+                    stroke="#323232" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </p>
+            </button>
+
+            <!-- product name, weight & clarity -->
+            <div class="bg-transparent p-3 space-y-2">
+              <p class="text-0000009e font-normal text-xs">Weight: {{ item.weight }}</p>
+              <p class="text-0000009e font-normal text-xs">Clarity Grade: {{ item.clarity }}</p>
+              <p class="capitalize text-[13px] lg:text-[15px] font-normal font-marcellus truncate text-323232">{{ item.name
+                }}
+              </p>
+
+            </div>
+          </a>
+
+        </div>
+      </swiper-slide>
+
+    </swiper-container>
+
+  </div>
+</div>

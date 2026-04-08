@@ -1,0 +1,387 @@
+<div class="w-full mx-auto py-5 lg:py-8 px-2 lg:px-5 xl:px-16 grid grid-cols-1 md:grid-cols-2 gap-8 ">
+
+  <!-- Left: Product Images -->
+  <div class="w-full sm:w-3/4 lg:px-6 mx-auto">
+    <!-- product image div -->
+    <div>
+      <!-- Main Image -->
+      <div *ngIf="selectedImage" class="rounded-md overflow-hidden mt-6 cursor-zoom-in"
+        (click)="openZoom(thumbnails.indexOf(selectedImage))">
+        <img [src]="selectedImage" alt="Selected Design" class="w-full object-cover rounded-lg">
+      </div>
+
+      <!-- Thumbnail Loop -->
+      <div class="relative mt-2 flex items-center">
+        <!-- Prev -->
+        <button (click)="prevThumb()"
+          class="flex items-center justify-center absolute size-5 xl:size-7 left-0 bg-gray-200 shadow rounded-full z-10">
+          &#10094;
+        </button>
+
+        <div class="flex gap-2 mx-auto">
+          <img *ngFor="let img of visibleThumbnails" (click)="selectImage(img)" [src]="img"
+            class="size-12 xl:size-20 object-cover border rounded-md cursor-pointer flex-shrink-0"
+            [ngClass]="selectedImage === img ? 'border-5c5a5a' : 'border-transparent'">
+        </div>
+
+        <!-- Next -->
+        <button (click)="nextThumb()"
+          class="flex items-center justify-center absolute size-5 xl:size-7 right-0 bg-gray-200 shadow rounded-full z-10">
+          &#10095;
+        </button>
+      </div>
+    </div>
+
+    <!-- custom design big image -->
+    <div *ngIf="selectedMoreDesign" class="hidden md:block rounded-md overflow-hidden mt-6">
+      <img [src]="selectedMoreDesign" alt="Selected Design" class="w-full object-cover rounded-lg">
+    </div>
+
+  </div>
+
+  <!-- Right: Product Info -->
+  <div class="space-y-2">
+    <!-- Title + Price -->
+    <div>
+      <div class="flex items-start justify-between gap-2">
+        <h1 class="text-xl md:text-2xl xl:text-3xl font-marcellus text-323232 font-normal capitalize">Brilliant Round
+          White Diamond
+        </h1>
+        <div class="flex items-center justify-end gap-2">
+          <button class="cursor-pointer">
+            <p
+              class="hover:scale-105 transition duration-200">
+              <svg class="size-5 sm:size-6" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M53.7499 21.3455C53.7499 14.2781 48.0205 8.54883 40.9531 8.54883C36.3003 8.54883 32.2396 11.0403 29.9999 14.7538C27.76 11.0403 23.6995 8.54883 19.0466 8.54883C11.9792 8.54883 6.25 14.2781 6.25 21.3455C6.25 22.9611 6.562 24.5005 7.10825 25.9238C11.3396 38.0948 30 51.4507 30 51.4507C30 51.4507 48.6603 38.0948 52.8918 25.9238C53.438 24.5006 53.7499 22.9611 53.7499 21.3455Z"
+                  stroke="#323232" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </p>
+          </button>
+          <button class="cursor-pointer">
+            <p class=" hover:scale-105 transition duration-200">
+              <svg class="size-5 sm:size-6" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M26.9363 16.5L20.625 10.1887V13.5712L19.4425 13.75C13.5163 14.5887 9.50125 17.6962 7.205 22.4537C10.395 20.1987 14.355 19.1125 19.25 19.1125H20.625V22.8112M17.875 20.515C11.7288 20.8037 7.32875 23.0175 4.125 27.5C5.5 20.625 9.625 13.75 19.25 12.375V6.875L28.875 16.5L19.25 26.125V20.4875C18.7963 20.4875 18.3425 20.5012 17.875 20.515Z"
+                  fill="#323232" />
+              </svg>
+            </p>
+          </button>
+
+        </div>
+      </div>
+      <div class="flex items-center gap-4 lg:gap-5 mt-1 mb-4">
+        <p class="text-xl md:text-2xl xl:text-3xl font-semibold text-323232 mt-2">₹ 93,446</p>
+        <p class="text-xs md:text-base xl:text-xl text-ec1c1c mt-1 inline-flex items-center gap-1.5"><svg width="16"
+            height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M2 7.25V13.25C2 13.6478 2.15804 14.0294 2.43934 14.3107C2.72064 14.592 3.10218 14.75 3.5 14.75H12.5C12.8978 14.75 13.2794 14.592 13.5607 14.3107C13.842 14.0294 14 13.6478 14 13.25V7.25"
+              stroke="#EC1C1C" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M8 3.125C8 2.42881 7.72344 1.76113 7.23116 1.26884C6.73887 0.776562 6.07119 0.5 5.375 0.5C4.87772 0.5 4.40081 0.697544 4.04917 1.04917C3.69754 1.40081 3.5 1.87772 3.5 2.375C3.5 2.87228 3.69754 3.34919 4.04917 3.70083C4.40081 4.05246 4.87772 4.25 5.375 4.25H8M8 3.125V4.25M8 3.125C8 2.42881 8.27656 1.76113 8.76884 1.26884C9.26113 0.776562 9.92881 0.5 10.625 0.5C11.1223 0.5 11.5992 0.697544 11.9508 1.04917C12.3025 1.40081 12.5 1.87772 12.5 2.375C12.5 2.62123 12.4515 2.86505 12.3573 3.09253C12.263 3.32002 12.1249 3.52672 11.9508 3.70083C11.7767 3.87494 11.57 4.01305 11.3425 4.10727C11.115 4.2015 10.8712 4.25 10.625 4.25H8"
+              stroke="#EC1C1C" stroke-linejoin="round" />
+            <path d="M8 7.25V14.75M1.25 4.25H14.75V7.25H1.25V4.25Z" stroke="#EC1C1C" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          112 Sold</p>
+      </div>
+      <p class="text-base md:text-lg xl:text-xl font-normal text-000000b2">MRP Incl. of all taxes</p>
+      <!-- Stone Characteristics -->
+      <div class="mt-4 mb-2">
+        <p class="text-base lg:text-lg font-semibold text-000000b2 mb-2">Stone Characteristics</p>
+        <div class="sm:flex items-start gap-5 lg:gap-10 text-sm lg:text-base text-9d9d9d space-y-1.5">
+          <div class="w-full sm:w-1/2 md:w-1/3">
+            <p><span class="text-323232 font-semibold mr-1">Stone Type :</span> Ruby</p>
+            <p><span class="text-323232 font-semibold mr-1">Shape :</span> Round</p>
+            <p><span class="text-323232 font-semibold mr-1">Weight :</span> 2.50</p>
+          </div>
+          <div class="w-full sm:w-1/2 md:w-1/3">
+            <p><span class="text-323232 font-semibold mr-1">Primary Color :</span> Red</p>
+            <p><span class="text-323232 font-semibold mr-1">Dimension :</span> Round</p>
+            <p><span class="text-323232 font-semibold mr-1">Numerology :</span> 07</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customize Section -->
+    <div class="py-5 border-y border-gray-300 sm:flex items-center gap-4 mt-3">
+      <p class="text-base md:text-lg lg:text-xl font-medium text-323232 mb-3 whitespace-nowrap">Customize this design
+      </p>
+      <div class="flex items-start gap-4 overflow-x-auto">
+        <div (click)="selectCategory('ring')"
+          class="p-1.5 lg:p-3 border rounded-lg flex-1 min-w-[4rem] lg:min-w-[6rem] text-center cursor-pointer"
+          [ngClass]="selectedCategory === 'ring' ? 'border-5c5a5a' : 'border-f4f4f4'">
+          <img src="/assets/images/product/custom-ring.png" class="size-12 mx-auto">
+          <p class="text-xs lg:text-sm text-767676 font-medium capitalize mt-3">Rings</p>
+        </div>
+        <div (click)="selectCategory('earring')"
+          class="p-1.5 lg:p-3 border rounded-lg flex-1 min-w-[4rem] lg:min-w-[6rem] text-center cursor-pointer"
+          [ngClass]="selectedCategory === 'earring' ? 'border-5c5a5a' : 'border-f4f4f4'">
+          <img src="/assets/images/product/custom-earring.png" class="size-12 mx-auto">
+          <p class="text-xs lg:text-sm text-767676 font-medium capitalize mt-3">Earrings</p>
+        </div>
+        <div (click)="selectCategory('pendant')"
+          class="p-1.5 lg:p-3 border rounded-lg flex-1 min-w-[4rem] lg:min-w-[6rem] text-center cursor-pointer"
+          [ngClass]="selectedCategory === 'pendant' ? 'border-5c5a5a' : 'border-f4f4f4'">
+          <img src="/assets/images/product/custom-pendant.png" class="size-12 mx-auto">
+          <p class="text-xs lg:text-sm text-767676 font-medium capitalize mt-3">Pendant</p>
+        </div>
+        <div (click)="selectCategory('bracelet')"
+          class="p-1.5 lg:p-3 border rounded-lg flex-1 min-w-[4rem] lg:min-w-[6rem] text-center cursor-pointer"
+          [ngClass]="selectedCategory === 'bracelet' ? 'border-5c5a5a' : 'border-f4f4f4'">
+          <img src="/assets/images/product/custom-bracelet.png" class="size-12 mx-auto">
+          <p class="text-xs lg:text-sm text-767676 font-medium capitalize mt-3">Bracelet</p>
+        </div>
+        <div (click)="selectCategory('bracelet')"
+          class="p-1.5 lg:p-3 border rounded-lg flex-1 min-w-[4rem] lg:min-w-[6rem] text-center cursor-pointer"
+          [ngClass]="selectedCategory === 'bracelet' ? 'border-5c5a5a' : 'border-f4f4f4'">
+          <img src="/assets/images/product/custom-bracelet.png" class="size-12 mx-auto">
+          <p class="text-xs lg:text-sm text-767676 font-medium capitalize mt-3">Bracelet</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dropdowns -->
+    <div *ngIf="selectedCategory"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-7 border-b border-gray-300">
+      <select class="cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm xl:text-base text-gray-500">
+        <option disabled selected hidden>Certification </option>
+        <option>GIA</option>
+        <option>IGI</option>
+        <option>GRS</option>
+        <option>IGJ</option>
+      </select>
+       <select class="cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm xl:text-base text-gray-500">
+        <option disabled selected hidden>Select Metal Type</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+      </select>
+      <select class="cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm xl:text-base text-gray-500">
+        <option>Select Carat (ct)</option>
+        <option>18 ct</option>
+        <option>22 ct</option>
+        <option>24 ct</option>
+      </select>
+      <select class="cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm xl:text-base text-gray-500">
+        <option disabled selected hidden>Select Size</option>
+        <option>17</option>
+        <option>18</option>
+        <option>20</option>
+      </select>
+      <div (click)="openPopup()"
+        class="cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm xl:text-base text-gray-500">
+        <p>Pooja / Energization</p>
+      </div>
+
+      <select class="cursor-pointer border border-gray-300 rounded-md px-3 py-2 text-sm xl:text-base text-gray-500">
+        <option disabled selected hidden>Numerology</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </div>
+
+    <!-- More Design -->
+    <div *ngIf="selectedCategory" class="pt-5">
+      <p class="text-base md:text-lg lg:text-xl font-medium text-323232 mb-3">More Design</p>
+      <div class="flex items-start justify-start gap-3 overflow-x-auto">
+        <div class="w-[6rem] text-center cursor-pointer px-2">
+          <svg class="size-7 mx-auto" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1132_14634)">
+              <path
+                d="M32.8035 16.7871C32.2466 13.9649 30.7272 11.4237 28.5047 9.59732C26.2823 7.77099 23.4947 6.77291 20.6181 6.77356C15.8269 6.77356 11.6656 9.49247 9.59325 13.4714C7.15657 13.7347 4.90314 14.8892 3.26596 16.713C1.62878 18.5369 0.723348 20.9014 0.723633 23.3523C0.723633 28.8398 5.18331 33.2995 10.6709 33.2995H32.2232C36.7989 33.2995 40.5126 29.5859 40.5126 25.0102C40.5126 20.6334 37.1139 17.0855 32.8035 16.7871ZM32.2232 29.9838H10.6709C7.00697 29.9838 4.03938 27.0162 4.03938 23.3523C4.03938 19.9536 6.57592 17.1187 9.9414 16.7705L11.7153 16.5882L12.5443 15.0132C13.3068 13.5291 14.464 12.2842 15.8885 11.4155C17.313 10.5468 18.9496 10.0879 20.6181 10.0893C24.9617 10.0893 28.7085 13.1729 29.554 17.4337L30.0514 19.9205L32.5879 20.1029C33.8342 20.1867 35.0025 20.7395 35.8576 21.65C36.7128 22.5605 37.1913 23.7611 37.1968 25.0102C37.1968 27.7456 34.9587 29.9838 32.2232 29.9838ZM13.9866 21.6944H18.2142V26.668H23.022V21.6944H27.2496L20.6181 15.0629L13.9866 21.6944Z"
+                fill="#6C6464" />
+            </g>
+            <defs>
+              <clipPath id="clip0_1132_14634">
+                <rect width="39.7889" height="39.7889" fill="white" transform="translate(0.723633 0.140625)" />
+              </clipPath>
+            </defs>
+          </svg>
+          <p class="text-000000b2 text-[10px] font-semibold">UPLOAD</p>
+          <p class="text-9d9d9d text-[8px] font-semibold whitespace-nowrap">Your Own Design</p>
+          <p class="text-9d9d9d text-[8px] font-semibold">Customized<br>Design</p>
+          <p class="text-323232 text-[10px] font-semibold">+ ₹ 4,500</p>
+        </div>
+
+        <!-- Thumbnail Images -->
+        <ng-container *ngFor="let img of moreDesignImages">
+          <img (click)="selectMoreDesign(img)" [src]="img"
+            class="size-20 xl:size-24 object-cover border-2 rounded-md cursor-pointer" [ngClass]="{
+        'border-5c5a5a': selectedMoreDesign === img,
+        'border-transparent': selectedMoreDesign !== img
+      }" />
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- custom design big image -->
+    <div *ngIf="selectedMoreDesign" class="md:hidden rounded-md overflow-hidden mt-6">
+      <img [src]="selectedMoreDesign" alt="Selected Design" class="w-full object-cover rounded-lg">
+    </div>
+
+    <!-- Add to Cart -->
+    <div class="border-b border-gray-300">
+      <button (click)="openCart()"
+        class="cursor-pointer w-full py-2 xl:py-3 my-3 font-marcellus bg-gradient-to-r from-[#0AC05E] to-[#055A2C] text-white text-lg xl:text-xl rounded-md shadow hover:bg-green-700 transition">
+        Add To Cart
+      </button>
+    </div>
+
+    <!-- Policies -->
+    <div
+      class="lg:w-4/5 mx-auto sm:flex items-center justify-center xl:justify-center gap-2 xl:gap-6 text-sm text-gray-600">
+      <div clas="text-center px-2 xl:px-4 py-2">
+        <svg class="mx-auto mb-2" width="20" height="30" viewBox="0 0 20 30" fill="none"
+          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="20" height="30" fill="url(#pattern0_1132_14093)" fill-opacity="0.5" />
+          <defs>
+            <pattern id="pattern0_1132_14093" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <use xlink:href="#image0_1132_14093" transform="matrix(0.0104167 0 0 0.00694444 0 0.166667)" />
+            </pattern>
+            <image id="image0_1132_14093" width="96" height="96" preserveAspectRatio="none"
+              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAADQUlEQVR4nO2cy2oUQRSGPy+JWSneV8YHEAUvG3HlhcGIoqC+hUlcqiO4k7h0F9wbF0peQaIb0X2ioBvRuNBEQWEcvLQ0VEBEpiqZqT7VXf8HZ5ch5/x/X6pOVTUIIYQQQgghhMiW08BN6yRypQV0gAKYsk4mZ/ELmWAvfiET7MUvZEL8F27HI/5K6MVscOUXLrrAWeuEm4TEN0TiGyLxDZH4hkh8QyS+IRLfEIlviMQ3ROIbIvENkfiGSHxDJL4hEt8QiV+Tlay6RhdYBt4Ac8A94CpwGNhgKf6pDMQvPFEa8wA4A2ysUvxjwLcEBCgSig/ADWBLbPGPAF8SKLhIND4DbWCTDMA0XgEnY5lwFPiaQJFF4vEbuAsMxTBBL2GC4ymw3XoOkHssAKPWc4GO+/s6MQRsBfYBF4HbwDPg1xpMeCsTBsce4DrwbpUmzMd6HOVoAm64eQVYWoUJT2JN3HI1oWQn8HAVJkTb6Z2zCbi74UfgEPUEkcjdhPOB9b+MOWOWCfAzoPayfxSN3E0YD+yobo6ZRO4mPLK+C3I3YZe7ynvVvFjFekLOJowH1Fwu6kQnVxNGgPeeemeqSiZXE9qeWsuZ9PpUd1Kco/6MBjTwDlWZUI53wnNPnZNVJ5TbnTDlqXHaIqmcTLjkqe+xVWK5fKpgv6e2cvOXGa0AE25Rb3Z46vtonWCrhwl1Fx/X+exlwHcSoPUfE5ogfm0M+NeEpohfi0dQ0z/al/RLOAcupzoMzYU7KU7EcuJFaq2InNgb0Iw7aJ1kk/G1oz9V2Y7OjRG37NjLgPvWSTaZiYAe15h1kk1ltzu2ZL4onyPrgNmAq7/cZS0iMJnCxqxcuRC4NfGadaJNFb8TeGxp2DrZpj3zJwOv/HJSdtw64aaNdmYDhF+J8qyZGNAkayJgqPl3lB/90LBzABut2gEz3MoO6TWVYWAbcMBtK5lyXc1kjqn6/mndf18MKOZjnRFOXUAfVYg/F/Oxk7qAPmr7sY7QAur++2KNsVDVOD91AX0MWvhl116obIabuoA+BiX8outqVt5YS11AH/2IvuRWssYsv6CYuoD9/r7rhH7t9u1Mu35PeZpFa7hCCCGEEEII+uUP/YrsTpdOvNcAAAAASUVORK5CYII=" />
+          </defs>
+        </svg>
+        <p class="text-2a82c4 font-medium text-[10px] lg:text-xs xl:text-sm text-center">7 Day Returnable</p>
+      </div>
+      <div class="text-center sm:border-x border-gray-300 px-2 xl:px-4 py-2 mt-2 sm:mt-0">
+        <svg class="mx-auto mb-2.5" width="22" height="23" viewBox="0 0 22 23" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9.45 13.1205L6.5 11.7352C6.4 11.683 6.35 11.6045 6.35 11.5C6.35 11.3955 6.4 11.317 6.5 11.2648L9.45 9.85341L10.775 6.79545C10.825 6.69091 10.9 6.63864 11 6.63864C11.1 6.63864 11.175 6.69091 11.225 6.79545L12.575 9.85341L15.5 11.2648C15.6 11.317 15.65 11.3955 15.65 11.5C15.65 11.6045 15.6 11.683 15.5 11.7352L12.575 13.1205L11.225 16.2045C11.175 16.3091 11.1 16.3614 11 16.3614C10.9 16.3614 10.825 16.3091 10.775 16.2045L9.45 13.1205ZM11 23C9.13333 23 7.41667 22.5557 5.85 21.667C4.28333 20.7784 3 19.5936 2 18.1125V19.8636C2 20.1598 1.90417 20.4081 1.7125 20.6085C1.52083 20.8089 1.28333 20.9091 1 20.9091C0.716667 20.9091 0.479167 20.8089 0.2875 20.6085C0.0958333 20.4081 0 20.1598 0 19.8636V15.6818C0 15.3856 0.0958333 15.1373 0.2875 14.9369C0.479167 14.7366 0.716667 14.6364 1 14.6364H5C5.28333 14.6364 5.52083 14.7366 5.7125 14.9369C5.90417 15.1373 6 15.3856 6 15.6818C6 15.978 5.90417 16.2263 5.7125 16.4267C5.52083 16.6271 5.28333 16.7273 5 16.7273H3.525C4.325 17.9818 5.37917 18.9924 6.6875 19.7591C7.99583 20.5258 9.43333 20.9091 11 20.9091C13.35 20.9091 15.3708 20.0902 17.0625 18.4523C18.7542 16.8144 19.7167 14.8019 19.95 12.4148C19.9833 12.136 20.1 11.9138 20.3 11.7483C20.5 11.5828 20.7333 11.5 21 11.5C21.2833 11.5 21.525 11.5915 21.725 11.7744C21.925 11.9574 22.0083 12.1795 21.975 12.4409C21.8583 13.922 21.4917 15.3028 20.875 16.5835C20.2583 17.8642 19.4583 18.9794 18.475 19.929C17.4917 20.8786 16.3625 21.6278 15.0875 22.1767C13.8125 22.7256 12.45 23 11 23ZM11 2.09091C8.65 2.09091 6.62917 2.90985 4.9375 4.54773C3.24583 6.18561 2.28333 8.19811 2.05 10.5852C2.01667 10.864 1.9 11.0862 1.7 11.2517C1.5 11.4172 1.26667 11.5 1 11.5C0.716667 11.5 0.475 11.4085 0.275 11.2256C0.075 11.0426 -0.00833333 10.8205 0.025 10.5591C0.141667 9.07803 0.508333 7.69716 1.125 6.41648C1.74167 5.1358 2.54167 4.02064 3.525 3.07102C4.50833 2.1214 5.6375 1.37216 6.9125 0.823295C8.1875 0.274432 9.55 0 11 0C12.8667 0 14.5833 0.444318 16.15 1.33295C17.7167 2.22159 19 3.40644 20 4.8875V3.13636C20 2.84015 20.0958 2.59186 20.2875 2.39148C20.4792 2.1911 20.7167 2.09091 21 2.09091C21.2833 2.09091 21.5208 2.1911 21.7125 2.39148C21.9042 2.59186 22 2.84015 22 3.13636V7.31818C22 7.61439 21.9042 7.86269 21.7125 8.06307C21.5208 8.26345 21.2833 8.36364 21 8.36364H17C16.7167 8.36364 16.4792 8.26345 16.2875 8.06307C16.0958 7.86269 16 7.61439 16 7.31818C16 7.02197 16.0958 6.77367 16.2875 6.5733C16.4792 6.37292 16.7167 6.27273 17 6.27273H18.475C17.675 5.01818 16.6208 4.00758 15.3125 3.24091C14.0042 2.47424 12.5667 2.09091 11 2.09091Z"
+            fill="black" fill-opacity="0.5" />
+        </svg>
+        <p class="text-2a82c4 font-medium text-[10px] lg:text-xs xl:text-sm text-center">Lifetime Exchange & Buy-Back
+        </p>
+      </div>
+      <div class="text-center px-2 xl:px-4 py-2">
+        <svg class="mx-auto mb-2" width="27" height="27" viewBox="0 0 27 27" fill="none"
+          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <rect width="27" height="27" fill="url(#pattern0_342_3145)" fill-opacity="0.5" />
+          <defs>
+            <pattern id="pattern0_342_3145" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <use xlink:href="#image0_342_3145" transform="scale(0.0104167)" />
+            </pattern>
+            <image id="image0_342_3145" width="96" height="96" preserveAspectRatio="none"
+              xlink:href="data:image/png;base64,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" />
+          </defs>
+        </svg>
+
+        <p class="text-2a82c4 font-medium text-[10px] lg:text-xs xl:text-sm text-center">Certified jewelry </p>
+      </div>
+    </div>
+
+    <!-- Dispatch Info -->
+    <p
+      class="w-full inline-flex items-center justify-center gap-1 text-gray-400 font-normal text-xs lg:text-base pt-3 border-t border-gray-300 text-center">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 4.125V5.5H13.0625V15.8125H8.83025C8.52362 14.6307 7.46075 13.75 6.1875 13.75C4.91425 13.75 3.85138 14.6307 3.54475 15.8125H2.75V12.375H1.375V17.1875H3.54475C3.85138 18.3693 4.91425 19.25 6.1875 19.25C7.46075 19.25 8.52362 18.3693 8.83025 17.1875H14.5448C14.8514 18.3693 15.9143 19.25 17.1875 19.25C18.4608 19.25 19.5236 18.3693 19.8302 17.1875H22V11.5802L21.9567 11.4723L20.5817 7.34731L20.4325 6.875H14.4375V4.125H0ZM0.6875 6.875V8.25H6.875V6.875H0.6875ZM14.4375 8.25H19.4432L20.625 11.7734V15.8125H19.8302C19.5236 14.6307 18.4608 13.75 17.1875 13.75C15.9143 13.75 14.8514 14.6307 14.5448 15.8125H14.4375V8.25ZM1.375 9.625V11H5.5V9.625H1.375ZM6.1875 15.125C6.95544 15.125 7.5625 15.7321 7.5625 16.5C7.5625 17.2679 6.95544 17.875 6.1875 17.875C5.41956 17.875 4.8125 17.2679 4.8125 16.5C4.8125 15.7321 5.41956 15.125 6.1875 15.125ZM17.1875 15.125C17.9554 15.125 18.5625 15.7321 18.5625 16.5C18.5625 17.2679 17.9554 17.875 17.1875 17.875C16.4196 17.875 15.8125 17.2679 15.8125 16.5C15.8125 15.7321 16.4196 15.125 17.1875 15.125Z"
+          fill="#F63C3C" />
+      </svg>
+      Expected Dispatch Date: <span class="text-323232">12 SEP, 2025</span>
+    </p>
+  </div>
+</div>
+<!-- cart-sidebar -->
+<app-cart-sidebar [isOpen]="isCartOpen" (close)="closeCart()"></app-cart-sidebar>
+<!-- Zoom Modal -->
+<div *ngIf="zoomOpen" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+  <button (click)="closeZoom()" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+  <button (click)="prevImage()" class="absolute left-4 text-white text-4xl">&#10094;</button>
+  <img [src]="thumbnails[zoomIndex]" class="max-h-[90%] max-w-[90%] object-contain rounded-lg">
+  <button (click)="nextImage()" class="absolute right-4 text-white text-4xl">&#10095;</button>
+</div>
+
+
+<!--Pooja / Energization Popup -->
+<div *ngIf="isPopupOpen" (click)="closePopup()" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+  <div (click)="$event.stopPropagation()" class="bg-white w-full max-w-2xl  mx-auto rounded-2xl shadow-lg relative">
+
+    <!-- Close Button -->
+    <button (click)="closePopup()"
+      class="absolute top-1 right-1 text-gray-600 hover:text-black hover:bg-f9f9f9 px-2 py-1 rounded-md text-xl">
+      ✕
+    </button>
+
+    <div class="max-h-[80vh] overflow-y-auto p-6 md:p-8">
+      <div class="bg-[url('/assets/images/home/pooja-bg.png')] bg-no-repeat bg-cover bg-center p-6  text-center">
+        <p class="font-normal text-lg md:text-xl xl:text-2xl text-white my-4">
+          Pooja of Rudraksha beads :<br>
+          Understand the Energization Process
+        </p>
+      </div>
+      <div class="mt-5 space-y-4">
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Pooja / Energization*</p>
+          <select
+            class="w-full sm:w-1/2 cursor-pointer border border-gray-300 px-3 py-2 text-sm md:text-[15px] text-323232">
+            <option disabled selected hidden>Select</option>
+            <option>No Energization</option>
+            <option>Vedic Pooja + ₹ 1,100</option>
+          </select>
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Name Of Wearer</p>
+          <input type="text"
+            class="block px-2.5 pb-2 py-2 w-full sm:w-1/2 text-sm md:text-[15px] text-323232 placeholder:text-767676 border border-gray-300 bg-white appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder="Enter Name of Wearer" />
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Date Of Birth</p>
+          <input type="text"
+            class="block px-2.5 pb-2 py-2 w-full sm:w-1/2 text-sm md:text-[15px] text-323232 placeholder:text-767676 border border-gray-300 bg-white appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder="Enter Date of Birth" />
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Place Of Birth</p>
+          <input type="text"
+            class="block px-2.5 pb-2 py-2 w-full sm:w-1/2 text-sm md:text-[15px] text-323232 placeholder:text-767676 border border-gray-300 bg-white appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder="Enter Place of Birth" />
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Time Of Birth</p>
+          <input type="text"
+            class="block px-2.5 pb-2 py-2 w-full sm:w-1/2 text-sm md:text-[15px] text-323232 placeholder:text-767676 border border-gray-300 bg-white appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder="Enter Time of Birth" />
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Gender</p>
+          <select
+            class="w-full sm:w-1/2 cursor-pointer border border-gray-300 px-3 py-2 text-sm md:text-[15px] text-323232">
+            <option disabled selected hidden>Select Gender </option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Clan/Gotra (If Available)</p>
+          <input type="text"
+            class="block px-2.5 pb-2 py-2 w-full sm:w-1/2 text-sm md:text-[15px] text-323232 placeholder:text-767676 border border-gray-300 bg-white appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+            placeholder="Enter Clan/Gotra" />
+        </div>
+        <div class="flex items-center justify-between gap-2 lg:gap-4">
+          <p class="w-full sm:w-1/2">Primary Purpose</p>
+          <select class="w-full sm:w-1/2 cursor-pointer border border-gray-300 px-3 py-2 text-base text-gray-500">
+            <option disabled selected hidden>Select Gender </option>
+            <option>General</option>
+            <option>Health</option>
+            <option>Career</option>
+            <option>Wealth & Fortune</option>
+            <option>Education</option>
+            <option>Personal Relations</option>
+          </select>
+        </div>
+
+        <button
+          class="w-full py-2 xl:py-3 my-3 font-marcellus bg-gradient-to-r from-[#0AC05E] to-[#055A2C] text-white text-lg xl:text-xl rounded-md shadow hover:bg-green-700 transition">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

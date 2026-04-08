@@ -1,0 +1,138 @@
+<app-details></app-details>
+<div class="w-full mx-auto px-2 lg:px-5 xl:px-16">
+  <div>
+    <!-- filter vertically -->
+    <app-filter></app-filter>
+    <!-- sort bar div -->
+    <div  *ngIf="showSortBar" class="bg-f4f4f4 px-4 py-2 mb-4 flex sm:items-center justify-between gap-2 shadow-(--shadow) rounded-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-start gap-2 sm:gap-4">
+        <!-- for total items -->
+        <div class="flex items-center justify-start gap-1.5">
+          <svg class="size-[15px] sm:size-5" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1.37353 18.3149C0.938078 17.8796 0.592648 17.3628 0.356974 16.7939C0.121301 16.2251 0 15.6154 0 14.9996C0 14.3839 0.121301 13.7742 0.356974 13.2053C0.592648 12.6365 0.938078 12.1197 1.37353 11.6843L11.685 1.37313C12.1203 0.937792 12.6371 0.592466 13.2059 0.356864C13.7747 0.121263 14.3843 0 15 0C15.6157 0 16.2253 0.121263 16.7941 0.356864C17.3629 0.592466 17.8797 0.937792 18.315 1.37313L28.6272 11.6858C29.5062 12.565 30 13.7572 30 15.0004C30 16.2435 29.5062 17.4358 28.6272 18.3149L18.3158 28.6269C17.8804 29.0622 17.3636 29.4075 16.7948 29.6431C16.226 29.8787 15.6164 30 15.0007 30C14.3851 30 13.7755 29.8787 13.2067 29.6431C12.6379 29.4075 12.1211 29.0622 11.6857 28.6269L1.37353 18.3149ZM2.69894 13.0097C2.43766 13.2709 2.23041 13.581 2.089 13.9223C1.9476 14.2636 1.87482 14.6294 1.87482 14.9989C1.87482 15.3683 1.9476 15.7341 2.089 16.0754C2.23041 16.4168 2.43766 16.7269 2.69894 16.9881L13.0126 27.3008C13.5401 27.8282 14.2555 28.1245 15.0015 28.1245C15.7475 28.1245 16.4629 27.8282 16.9904 27.3008L27.3018 16.9888C27.5631 16.7276 27.7703 16.4175 27.9117 16.0762C28.0532 15.7349 28.1259 15.3691 28.1259 14.9996C28.1259 14.6302 28.0532 14.2644 27.9117 13.9231C27.7703 13.5818 27.5631 13.2716 27.3018 13.0104L16.9896 2.6985C16.4621 2.17107 15.7467 1.87477 15.0007 1.87477C14.2548 1.87477 13.5394 2.17107 13.0119 2.6985L2.69894 13.0097Z"
+              fill="#457EFD" />
+          </svg>
+          <p class="gap-1.5 font-medium text-xs md:text-sm lg:text-base text-767676 flex items-center justify-start">
+            <span class="block text-323232 font-semibold">1,359</span>Total Items
+          </p>
+        </div>
+        <!-- for available items -->
+        <div class="flex items-center justify-start gap-1.5">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="5" cy="5" r="5" fill="#4CAF50" />
+          </svg>
+          <p class="gap-1.5 font-medium text-xs md:text-sm lg:text-base text-2a82c4 flex items-center justify-start">
+            <span class="block text-323232 font-semibold">458</span>Available
+          </p>
+        </div>
+        <!-- for hold items -->
+        <div class="flex items-center justify-start gap-1.5">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="5" cy="5" r="5" fill="#FF6900" />
+          </svg>
+          <p class="gap-1.5 font-medium text-xs md:text-sm lg:text-base text-767676 flex items-center justify-start">
+            <span class="block text-323232 font-semibold">34</span>On Hold
+          </p>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-end sm:items-center justify-end gap-2 sm:gap-4">
+        <!-- for Export data -->
+        <div class="flex items-center justify-start gap-1.5 cursor-pointer md:p-2 hover:bg-gray-50">
+          <svg class="size-[15px] sm:size-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M5.625 15C5.625 14.5858 5.28921 14.25 4.875 14.25C4.46079 14.25 4.125 14.5858 4.125 15H5.625ZM4.875 16H4.125H4.875ZM19.275 15C19.275 14.5858 18.9392 14.25 18.525 14.25C18.1108 14.25 17.775 14.5858 17.775 15H19.275ZM11.1086 15.5387C10.8539 15.8653 10.9121 16.3366 11.2387 16.5914C11.5653 16.8461 12.0366 16.7879 12.2914 16.4613L11.1086 15.5387ZM16.1914 11.4613C16.4461 11.1347 16.3879 10.6634 16.0613 10.4086C15.7347 10.1539 15.2634 10.2121 15.0086 10.5387L16.1914 11.4613ZM11.1086 16.4613C11.3634 16.7879 11.8347 16.8461 12.1613 16.5914C12.4879 16.3366 12.5461 15.8653 12.2914 15.5387L11.1086 16.4613ZM8.39138 10.5387C8.13662 10.2121 7.66533 10.1539 7.33873 10.4086C7.01212 10.6634 6.95387 11.1347 7.20862 11.4613L8.39138 10.5387ZM10.95 16C10.95 16.4142 11.2858 16.75 11.7 16.75C12.1142 16.75 12.45 16.4142 12.45 16H10.95ZM12.45 5C12.45 4.58579 12.1142 4.25 11.7 4.25C11.2858 4.25 10.95 4.58579 10.95 5H12.45ZM4.125 15V16H5.625V15H4.125ZM4.125 16C4.125 18.0531 5.75257 19.75 7.8 19.75V18.25C6.61657 18.25 5.625 17.2607 5.625 16H4.125ZM7.8 19.75H15.6V18.25H7.8V19.75ZM15.6 19.75C17.6474 19.75 19.275 18.0531 19.275 16H17.775C17.775 17.2607 16.7834 18.25 15.6 18.25V19.75ZM19.275 16V15H17.775V16H19.275ZM12.2914 16.4613L16.1914 11.4613L15.0086 10.5387L11.1086 15.5387L12.2914 16.4613ZM12.2914 15.5387L8.39138 10.5387L7.20862 11.4613L11.1086 16.4613L12.2914 15.5387ZM12.45 16V5H10.95V16H12.45Z"
+                fill="#000000"></path>
+            </g>
+          </svg>
+          <p class="gap-1.5 font-medium text-xs md:text-sm lg:text-base text-767676 flex items-center justify-start">
+            Export Data</p>
+        </div>
+        <!-- for Sort -->
+        <div class="sortdiv relative inline-block">
+          <!-- Trigger Button -->
+          <button type="button"
+            class="flex items-center gap-1.5 md:p-2 rounded-md text-xs md:text-sm lg:text-base font-medium text-gray-700 hover:bg-gray-50"
+            (click)="isSortOpen = !isSortOpen">
+            <!-- Sort Icon -->
+            <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M16 5.25C16.2029 5.25 16.3972 5.33222 16.5384 5.47789L20.5384 9.60289C20.8268 9.90025 20.8195 10.3751 20.5221 10.6634C20.2247 10.9518 19.7499 10.9445 19.4616 10.6471L16.75 7.8508V18c0 .414-.336.75-.75.75s-.75-.336-.75-.75V7.851l-2.712 2.796a.75.75 0 0 1-1.066-1.044l4-4.125A.75.75 0 0 1 16 5.25zM8 5.25c.414 0 .75.336.75.75v10.149l2.712-2.796a.75.75 0 1 1 1.066 1.044l-4 4.125a.75.75 0 0 1-1.066 0l-4-4.125a.75.75 0 0 1 1.066-1.044L7.25 16.149V6c0-.414.336-.75.75-.75z"
+                fill="currentColor" />
+            </svg>
+            <span>Sort</span>
+            <!-- Dropdown Arrow -->
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div *ngIf="isSortOpen"
+            class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+            <ul class="p-1 text-xs md:text-sm lg:text-base text-gray-700">
+              <li>
+                <button (click)="applySort('lowToHigh')" class="w-full text-left p-2 hover:bg-gray-100">
+                  Price: Low to High
+                </button>
+              </li>
+              <li>
+                <button (click)="applySort('highToLow')" class="w-full text-left p-2 hover:bg-gray-100">
+                  Price: High to Low
+                </button>
+              </li>
+              <li>
+                <button (click)="applySort('newest')" class="w-full text-left p-2 hover:bg-gray-100">
+                  Newest First
+                </button>
+              </li>
+              <li>
+                <button (click)="applySort('popular')" class="w-full text-left p-2 hover:bg-gray-100">
+                  Most Popular
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 sm:gap-4">
+          <!-- for grid view -->
+          <a (click)="viewMode = 'grid'" class="cursor-pointer block md:p-2 hover:bg-gray-50">
+            <svg class="size-[15px] sm:size-[18px]" fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M30 32h-10c-1.105 0-2-0.895-2-2v-10c0-1.105 0.895-2 2-2h10c1.105 0 2 0.895 2 2v10c0 1.105-0.895 2-2 2zM30 20h-10v10h10v-10zM30 14h-10c-1.105 0-2-0.896-2-2v-10c0-1.105 0.895-2 2-2h10c1.105 0 2 0.895 2 2v10c0 1.104-0.895 2-2 2zM30 2h-10v10h10v-10zM12 32h-10c-1.105 0-2-0.895-2-2v-10c0-1.105 0.895-2 2-2h10c1.104 0 2 0.895 2 2v10c0 1.105-0.896 2-2 2zM12 20h-10v10h10v-10zM12 14h-10c-1.105 0-2-0.896-2-2v-10c0-1.105 0.895-2 2-2h10c1.104 0 2 0.895 2 2v10c0 1.104-0.896 2-2 2zM12 2h-10v10h10v-10z">
+                </path>
+              </g>
+            </svg>
+          </a>
+          <!-- for list view -->
+          <a (click)="viewMode = 'list'" class="cursor-pointer block md:p-2 hover:bg-gray-50">
+            <svg class="size-[18px] sm:size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M8 6.00067L21 6.00139M8 12.0007L21 12.0015M8 18.0007L21 18.0015M3.5 6H3.51M3.5 12H3.51M3.5 18H3.51M4 6C4 6.27614 3.77614 6.5 3.5 6.5C3.22386 6.5 3 6.27614 3 6C3 5.72386 3.22386 5.5 3.5 5.5C3.77614 5.5 4 5.72386 4 6ZM4 12C4 12.2761 3.77614 12.5 3.5 12.5C3.22386 12.5 3 12.2761 3 12C3 11.7239 3.22386 11.5 3.5 11.5C3.77614 11.5 4 11.7239 4 12ZM4 18C4 18.2761 3.77614 18.5 3.5 18.5C3.22386 18.5 3 18.2761 3 18C3 17.7239 3.22386 17.5 3.5 17.5C3.77614 17.5 4 17.7239 4 18Z"
+                  stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- all products -->
+    <app-all-products *ngIf="viewMode === 'grid'"></app-all-products>
+    <app-all-product-list *ngIf="viewMode === 'list'"></app-all-product-list>
+
+  </div>
+</div>

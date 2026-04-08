@@ -1,0 +1,8 @@
+<!-- admin div -->
+<app-details></app-details>
+<app-admin-login *ngIf="isLogin" (switchForm)="toggleForm()"></app-admin-login>
+<app-admin-registration *ngIf="!isLogin" (switchForm)="toggleForm()"></app-admin-registration>
+
+<!-- requset for demo -->
+<app-request-demo></app-request-demo>
+

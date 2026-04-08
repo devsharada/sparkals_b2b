@@ -1,0 +1,15 @@
+<nav class="flex items-center text-sm text-gray-900" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1">
+    <li *ngFor="let item of items; let last = last" class="inline-flex items-center text-xs sm:text-base">
+      <a *ngIf="!last && item.url"
+         [routerLink]="item.url"
+         class="hover:text-gray-600">
+        {{ item.label }}
+      </a>
+      <span *ngIf="last" class="font-medium text-gray-600">
+        {{ item.label }}
+      </span>
+      <span *ngIf="!last" class="mx-1">/</span>
+    </li>
+  </ol>
+</nav>

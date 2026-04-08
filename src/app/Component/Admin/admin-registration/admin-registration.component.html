@@ -1,0 +1,91 @@
+<!-- admin registration form -->
+<div class="w-full mx-auto pt-5 lg:pt-10 px-2 lg:px-5 xl:px-16">
+  <div class="border border-0000002b rounded-xl bg-white p-4">
+    <div class="w-full md:w-2/5 mx-auto">
+    <h2 class="text-323232 font-normal text-3xl text-center mb-2">Register with us</h2>
+    <p class="text-sm md:text-base font-normal text-767676 text-center">Already have an account? <a (click)="switchForm.emit()" class="text-14a155 font-semibold cursor-pointer underline">Login</a></p>
+
+    <form action="" class="space-y-5 mt-6">
+
+      <!-- first Name -->
+      <div class="relative">
+        <input type="text"
+          class="block px-9 py-2 h-11 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 rounded-md appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="First Name" />
+        <img class="size-4 absolute top-3.5 left-2.5" src="/assets/images/home/user.png" alt="admin">
+      </div>
+
+      <!-- Last Name -->
+      <div class="relative">
+        <input type="text"
+          class="block px-9 py-2 h-11 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 rounded-md appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Last Name" />
+        <img class="size-4 absolute top-3.5 left-2.5" src="/assets/images/home/user.png" alt="admin">
+      </div>
+
+      <!-- Email ID-->
+      <div class="relative">
+        <input type="text"
+          class="block px-9 py-2 h-11 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 rounded-md appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Email ID" />
+        <img class="size-4 absolute top-3.5 left-2.5" src="/assets/images/home/email1.png" alt="Email">
+      </div>
+
+      <!-- Phone No -->
+      <div class="relative">
+        <input type="text"
+          class="block px-9 py-2 h-11 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 rounded-md appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Phone No." />
+        <img class="size-4 absolute top-3.5 left-2.5" src="/assets/images/home/phone1.png" alt="Email">
+      </div>
+
+      <!-- Password Input -->
+      <div class="relative">
+        <input [type]="showPassword ? 'text' : 'password'"
+          class="block px-9 py-2 h-11 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 rounded-md appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Password" />
+        <img class="size-4 absolute top-3.5 left-2.5" src="/assets/images/home/lock.png" alt="password">
+
+        <!-- Eye Slash Icon (Hide password) -->
+        <img *ngIf="!showPassword" (click)="togglePassword()" class="size-5 absolute top-3.5 right-3 cursor-pointer"
+          src="/assets/images/home/eye-slash.png" alt="hide">
+
+        <!-- Eye Icon (Show password) -->
+        <img *ngIf="showPassword" (click)="togglePassword()" class="size-5 absolute top-3.5 right-3 cursor-pointer"
+          src="/assets/images/home/eye.png" alt="show">
+      </div>
+
+      <!-- confirm Password Input -->
+      <div class="relative">
+        <input [type]="showPassword1 ? 'text' : 'password'"
+          class="block px-9 py-2 h-11 w-full text-sm md:text-[15px] text-323232 placeholder:text-767676 bg-white border-1 border-c3c3c3 rounded-md appearance-none focus:outline-none focus:ring-0 focus:border-18ac67 peer"
+          placeholder="Password" />
+        <img class="size-4 absolute top-3.5 left-2.5" src="/assets/images/home/lock.png" alt="password">
+
+        <!-- Eye Slash Icon (Hide password) -->
+        <img *ngIf="!showPassword1" (click)="togglePassword1()" class="size-5 absolute top-3.5 right-3 cursor-pointer"
+          src="/assets/images/home/eye-slash.png" alt="hide">
+
+        <!-- Eye Icon (Show password) -->
+        <img *ngIf="showPassword1" (click)="togglePassword1()" class="size-5 absolute top-3.5 right-3 cursor-pointer"
+          src="/assets/images/home/eye.png" alt="show">
+      </div>
+
+      <!-- captcha Verification -->
+      <div class="flex items-center border border-c3c3c3 rounded-md">
+        <div class="w-2/5 h-11">
+          <img class="w-full h-full" src="/assets/images/home/captcha.png" alt="captcha">
+        </div>
+        <input type="text"
+          class="block px-2.5 py-2 h-11 w-3/5 text-sm md:text-[15px] text-323232  placeholder:text-767676 bg-white  rounded-r-md appearance-none focus:outline-none focus:ring-1 focus:ring-18ac67 focus:border-18ac67 peer"
+          placeholder="Enter Captcha" />
+      </div>
+
+      <a routerLink="/admin/business-details"
+        class="mt-8 cursor-pointer text-center w-32 mx-auto block rounded-md border border-323232 bg-323232 text-white text-lg md:text-xl py-2 px-5  hover:bg-white hover:text-323232 transition">
+        Submit
+      </a>
+    </form>
+  </div>
+  </div>
+</div>
